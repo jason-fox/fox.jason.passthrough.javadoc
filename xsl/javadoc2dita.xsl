@@ -11,6 +11,11 @@
   
   <xsl:param name="output.dir.uri"/>
 
+  <xsl:function name="dita-ot:addZeroWidthSpaces">
+    <xsl:param name="text" as="xs:string"/>
+    <xsl:value-of select="replace($text,'\.','.&#8203;')"/>
+  </xsl:function>
+
   <xsl:template name="add-comment">
     <xsl:if test="comment">
       <lines class=" topic/lines "><xsl:value-of select="comment"/></lines>
@@ -21,7 +26,9 @@
     <xsl:text>(</xsl:text>
     <xsl:for-each select="parameter">
       <xsl:value-of select="replace(type/@qualified,'^.*\.','')"/>
+      <xsl:value-of select="type/@dimension"/>
       <xsl:value-of select="concat(' ', @name)"/>
+      <xsl:apply-templates select="type/generic"/>
       <xsl:if test="position() != last()">
         <xsl:text>, </xsl:text>
       </xsl:if>
@@ -67,6 +74,7 @@
           <xsl:otherwise>
             <codeph class=" pr-d/codeph ">
               <xsl:value-of select="child::return/@qualified"/>
+              <xsl:value-of select="child::return/@dimension"/>
             </codeph>
           </xsl:otherwise>
         </xsl:choose>
@@ -162,8 +170,8 @@
   <xsl:template name="add-method-summary">
     <table class=" topic/table " outputclass="method_summary">
       <tgroup class=" topic/tgroup " cols="2">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="20%"/>
-        <colspec class=" topic/colspec " colname="c2" colnum="2" colwidth="80%"/>
+        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
+        <colspec class=" topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
         <thead class=" topic/thead ">
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
@@ -180,7 +188,8 @@
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
-                  <xsl:value-of select="return/@qualified"/>
+                  <xsl:value-of select="dita-ot:addZeroWidthSpaces(return/@qualified)"/>
+                  <xsl:apply-templates select="return/generic"/>
                 </codeph>
               </entry>
                <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
@@ -207,9 +216,9 @@
 
   
   <xsl:template match="/">
-    <topic id="sample" domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3">
-      <title class="- topic/title ">Test!</title>
-      <body class="- topic/body ">This is a test
+    <topic id="sample" domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
+      <title class="- topic/title ">API Reference</title>
+      <body class="- topic/body ">
         <section class="- topic/section ">
           <title class="- topic/title " >Packages</title>
           <ul class=" topic/ul ">
@@ -227,7 +236,7 @@
   </xsl:template>
 
   <xsl:template match="package">
-    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
       <xsl:attribute name="id">
         <xsl:value-of select="@name"/>
       </xsl:attribute>
@@ -293,7 +302,7 @@
 
 
    <xsl:template match="class">
-    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
       <xsl:attribute name="id">
         <xsl:value-of select="@qualified"/>
       </xsl:attribute>
@@ -360,7 +369,7 @@
 
 
   <xsl:template match="interface">
-    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
       <xsl:attribute name="id">
         <xsl:value-of select="@qualified"/>
       </xsl:attribute>
@@ -407,7 +416,7 @@
   </xsl:template>
 
   <xsl:template match="enum">
-    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
       <xsl:attribute name="id">
         <xsl:value-of select="@qualified"/>
       </xsl:attribute>
@@ -578,5 +587,11 @@
         </tgroup>
       </table>
     <p class="- topic/p "/>
+  </xsl:template>
+  <xsl:template match="generic">
+    <xsl:text>&#8203;&lt;</xsl:text>
+    <xsl:value-of select="replace(@qualified,'^.*\.','')"/>
+    <xsl:apply-templates select="generic"/>
+    <xsl:text>&gt;&#8203;</xsl:text>
   </xsl:template>
 </xsl:stylesheet>
