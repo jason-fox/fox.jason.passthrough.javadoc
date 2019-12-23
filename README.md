@@ -21,7 +21,7 @@ in DITA.
 
 ## Background
 
-[<img src="https://jason-fox.github.io/fox.jason.passthrough.javadoc/javadoc.png" align="right" height="55">](https://docs.oracle.com/javase/1.5.0/docs/guide/javadoc/index.html)
+[<img src="https://jason-fox.github.io/fox.jason.passthrough.javadoc/javalogo.png" align="right" height="55">](https://docs.oracle.com/javase/1.5.0/docs/guide/javadoc/index.html)
 
 [JavaDoc](https://docs.oracle.com/javase/1.5.0/docs/guide/javadoc/index.html) is a tool that parses the declarations and documentation comments in a set of source files and produces a set of HTML pages describing the classes, interfaces, constructors, methods, and fields.
 
