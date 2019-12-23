@@ -82,29 +82,29 @@ If you are using maven you can generate XML-based JavaDoc by adding the followin
 ```xml
 <project>
   ...
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>xml-doclet</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>javadoc</goal>
-            </goals>
-            <configuration>
-              <doclet>com.github.markusbernhardt.xmldoclet.XmlDoclet</doclet>
-              <additionalparam>-d ${project.build.directory} -filename ${project.artifactId}-${project.version}-javadoc.xml</additionalparam>
-              <useStandardDocletOptions>false</useStandardDocletOptions>
-              <docletArtifact>
-                <groupId>com.github.markusbernhardt</groupId>
-                <artifactId>xml-doclet</artifactId>
-                <version>1.0.5</version>
-              </docletArtifact>
-            </configuration>
-        </execution>
-        </executions>
-      </plugin>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <executions>
+      <execution>
+        <id>xml-doclet</id>
+        <phase>prepare-package</phase>
+        <goals>
+          <goal>javadoc</goal>
+        </goals>
+        <configuration>
+          <doclet>com.github.markusbernhardt.xmldoclet.XmlDoclet</doclet>
+          <additionalparam>-d ${project.build.directory} -filename ${project.artifactId}-${project.version}-javadoc.xml</additionalparam>
+          <useStandardDocletOptions>false</useStandardDocletOptions>
+          <docletArtifact>
+            <groupId>com.github.markusbernhardt</groupId>
+            <artifactId>xml-doclet</artifactId>
+            <version>1.0.5</version>
+          </docletArtifact>
+        </configuration>
+    </execution>
+    </executions>
+  </plugin>
   ...
 </project>
 ```
@@ -118,7 +118,7 @@ javadoc -doclet com.github.markusbernhardt.xmldoclet.XmlDoclet \
 ```
 
 Once the source XML has been created, add it to the `*.ditamap` and mark it for **JavaDoc** processing, 
-but labelling it with `format="javadoc"` within the `*.ditamap` as shown:
+by labelling it with `format="javadoc"` within the `*.ditamap` as shown:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
