@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!--ant--><!--
+	This file is part of the DITA-OT javadoc Plug-in project.
+	See the accompanying LICENSE file for applicable licenses.
+-->
+<project name="fox.jason.passthrough.javadoc">
+
+	<!--
+		Create javadoc processing macros.
+	-->
+	<target name="javadoc.process.pre">
+		<!--
+			Individual file processing for javadoc.
+			Take an input format run javadoc against it and convert to DITA
+
+			@param src - The input file to convert to DITA
+			@param dest - The output file location
+			@param title - The title of the converted file
+			@param metadata - The metadata of the converted file
+		-->
+		<macrodef name="add-javadoc-file">
+			<attribute name="src" />
+			<attribute name="dest" />
+			<attribute name="title" />
+			<attribute name="metadata"/>
+			<sequential>
+				<echo taskname="javadoc" level="info" message="Processing @{src}"/>
+				<xslt taskname="javadoc" in="@{src}" out="@{dest}" force="true" style="${dita.plugin.fox.jason.passthrough.javadoc.dir}/xsl/javadoc2dita.xsl"/>
+
+				<copy file="@{dest}" tofile="${output.dir}/test.xml"/>
+			</sequential>
+		</macrodef>
+	</target>
+
+
+	<!--
+		Iterate across all files marked format="javadoc" and process them
+	-->
+	<target name="javadoc.process">
+		<passthrough-iterate format="javadoc" macro="add-javadoc-file"/>
+	</target>
+</project>
