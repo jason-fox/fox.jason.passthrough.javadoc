@@ -130,6 +130,10 @@
                   <xref class="- topic/xref " format="dita">
                     <xsl:attribute name="href">
                       <xsl:value-of select="concat('#', parent::*/@qualified, '/constructors_', @name)"/>
+                      <xsl:if test="count(../constructor[@name=@name])&gt;1">
+                        <xsl:value-of select="count(following-sibling::constructor[@name=@name])"/>
+                      </xsl:if>
+
                     </xsl:attribute>
                     <xsl:value-of select="@name"/>
                   </xref>
@@ -197,6 +201,9 @@
                   <xref class="- topic/xref " format="dita">
                     <xsl:attribute name="href">
                       <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_', @name)"/>
+                      <xsl:if test="count(../method[@name=@name])&gt;1">
+                        <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
+                      </xsl:if>
                     </xsl:attribute>
                     <xsl:value-of select="@name"/>
                   </xref>
@@ -487,6 +494,9 @@
     <table class=" topic/table " outputclass="constructor_details">
         <xsl:attribute name="id">
           <xsl:value-of select="concat('constructors_',@name)"/>
+          <xsl:if test="count(../constructor[@name=@name])&gt;1">
+            <xsl:value-of select="count(following-sibling::constructor[@name=@name])"/>
+          </xsl:if>
         </xsl:attribute>
         <tgroup class=" topic/tgroup " cols="1">
           <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
@@ -520,6 +530,9 @@
       <table class=" topic/table " outputclass="method_details">
         <xsl:attribute name="id">
           <xsl:value-of select="concat('methods_',@name)"/>
+          <xsl:if test="count(../method[@name=@name])&gt;1">
+            <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
+          </xsl:if>
         </xsl:attribute>
         <tgroup class=" topic/tgroup " cols="1">
           <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
