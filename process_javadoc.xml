@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><!--ant--><!--
-	This file is part of the DITA-OT javadoc Plug-in project.
-	See the accompanying LICENSE file for applicable licenses.
+<?xml version="1.0" encoding="UTF-8"?><!--ant-->
+<!--
+  This file is part of the DITA-OT JavaDoc Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
 -->
 <project name="fox.jason.passthrough.javadoc">
 

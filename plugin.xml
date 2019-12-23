@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="dita-ot/plugin.rnc" type="application/relax-ng-compact-syntax"?>
 <!--
-	This file is part of the DITA-OT javadoc Plug-in project.
+	This file is part of the DITA-OT JavaDoc Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.passthrough.javadoc" version="1.1.1">
+<plugin id="fox.jason.passthrough.javadoc" version="1.0.0">
 	<feature extension="ant.import" file="process_javadoc.xml"/>
 	<!--
 		This plugin requires the passthrough reader
