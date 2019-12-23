@@ -286,7 +286,7 @@
       <body class="- topic/body ">
         <xsl:call-template name="add-description"/>
         <xsl:if test="class">
-          <section class="- topic/section " outputclass="enums_summary">
+          <section class="- topic/section " outputclass="class_summary">
             <title class="- topic/title " >Class Summary</title>
             <ul class=" topic/ul ">
             <xsl:for-each select="class">
