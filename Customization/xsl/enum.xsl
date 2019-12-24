@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of the DITA-OT JavaDoc Plug-in project.
+  See the accompanying LICENSE file for applicable licenses.
+-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
+                xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
+                version="2.0">
+
+  <!--
+     Enumeration Overview
+  -->
+  <xsl:template match="enum">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
+      <xsl:attribute name="id">
+        <xsl:value-of select="@qualified"/>
+      </xsl:attribute>
+      <xsl:attribute name="outputclass">
+        <xsl:text>enum</xsl:text>
+      </xsl:attribute>
+      <title class="- topic/title "><xsl:value-of select="concat('Enum ', @name)"/></title>
+      <titlealts class="- topic/titlealts ">
+        <navtitle class="- topic/navtitle ">
+          <xsl:value-of select="@name"/>
+        </navtitle>
+        <searchtitle class="- topic/searchtitle ">
+          <xsl:value-of select="@name"/>
+        </searchtitle>
+      </titlealts>
+      <body class="- topic/body ">
+        <codeblock class=" pr-d/codeblock ">
+          <xsl:value-of select="concat(@scope, ' enum ')"/>
+          <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
+          <xsl:text> extends </xsl:text>
+          <xsl:value-of select="class/@qualified"/>
+          <xsl:apply-templates select="class/generic"/>
+        </codeblock>
+        <xsl:call-template name="add-description"/>
+        <xsl:if test="constant">
+          <!-- Enumeration Constants Summary -->
+          <section class="- topic/section " outputclass="constants_summary">
+            <title class="- topic/title " >Enum constants</title>
+            <xsl:call-template name="add-constant-summary"/>
+          </section>
+          <!-- Enumeration Method Summary -->
+          <section class="- topic/section " outputclass="methods_summary">
+            <title class="- topic/title " >Method Summary</title>
+            <xsl:call-template name="add-enum-method-summary"/>
+          </section>
+          <!-- Enumeration Constants Detail -->
+          <section class="- topic/section " outputclass="constants">
+            <xsl:attribute name="id">
+              <xsl:value-of select="concat(@qualified, '_constants')"/>
+            </xsl:attribute>
+            <title class="- topic/title " >Enum Constant Detail</title>
+            <xsl:apply-templates select="constant">
+              <xsl:sort select="@name" />
+            </xsl:apply-templates>
+          </section>
+          <!-- Enumeration Method Detail -->
+          <section class="- topic/section " outputclass="methods_summary">
+            <title class="- topic/title " >Method Detail</title>
+            <xsl:call-template name="add-enum-method-detail"/>
+          </section>
+        </xsl:if>
+      </body>
+    </topic>
+  </xsl:template>
+
+  <!--
+    Constant Summary
+  -->
+  <xsl:template name="add-constant-summary">
+    <ul class=" topic/ul ">
+      <xsl:for-each select="constant">
+        <xsl:sort select="@name"/>
+        <li class=" topic/li ">
+          <xref class="- topic/xref " format="dita" type="topic">
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat('#', parent::*/@qualified, '/enums_', @name)"/>
+            </xsl:attribute>
+            <xsl:processing-instruction name="ditaot">
+              <xsl:text>usertext</xsl:text>
+            </xsl:processing-instruction>
+            <xsl:value-of select="@name"/>
+          </xref>
+          <xsl:if test="comment">
+            <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
+          </xsl:if>
+        </li>
+     </xsl:for-each>
+    </ul>
+  </xsl:template>
+
+  <!--
+      Enum Constant Details
+  -->
+  <xsl:template match="constant">
+    <table class=" topic/table " outputclass="enum_details">
+        <xsl:attribute name="id">
+          <xsl:value-of select="concat('enums_',@name)"/>
+        </xsl:attribute>
+        <tgroup class=" topic/tgroup " cols="1">
+          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+          <thead class=" topic/thead ">
+            <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+                <xsl:value-of select="@name"/>
+              </entry>
+            </row>
+          </thead>
+          <tbody class=" topic/tbody ">
+             <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeblock class=" pr-d/codeblock ">
+                  <xsl:text>public static final </xsl:text>
+                  <xsl:value-of select="replace(class/generic/@qualified,'^.*\.','')"/>
+                  <xsl:value-of select="concat(' ', @name)"/>
+                </codeblock>
+                <p class="- topic/p ">
+                  <xsl:value-of select="comment"/>
+                </p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    <p class="- topic/p "/>
+  </xsl:template>
+
+  <!--
+    Enum Method Summary
+  -->
+  <xsl:template name="add-enum-method-summary">
+    <table class=" topic/table " outputclass="method_summary">
+      <tgroup class=" topic/tgroup " cols="2">
+        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
+        <colspec class=" topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
+        <thead class=" topic/thead ">
+          <row class=" topic/row ">
+            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+              Modifier and Type
+            </entry>
+            <entry class=" topic/entry " colname="c2" dita-ot:x="2" align="left">
+              Method and Description
+            </entry>
+          </row>
+        </thead>
+        <tbody class=" topic/tbody ">
+          <row class=" topic/row ">
+            <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+              <codeph class=" pr-d/codeph ">
+                <xsl:value-of select="concat('static ',@name)"/>
+              </codeph>
+            </entry>
+             <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
+              <codeph class=" pr-d/codeph ">
+                <xref class="- topic/xref " format="dita" type="table">
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_valueOf')"/>
+                  </xsl:attribute>
+                  <xsl:processing-instruction name="ditaot">
+                      <xsl:text>usertext</xsl:text>
+                    </xsl:processing-instruction>
+                  <xsl:text>valueOf</xsl:text>
+                </xref>
+                 <xsl:text>(java.lang.String name)</xsl:text>
+              </codeph>
+              <xsl:text>Returns the enum constant of this type with the specified name.</xsl:text>
+            </entry>
+          </row>
+          <row class=" topic/row ">
+            <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+              <codeph class=" pr-d/codeph ">
+                <xsl:value-of select="concat('static ',@name, '[]')"/>
+              </codeph>
+            </entry>
+             <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
+              <codeph class=" pr-d/codeph ">
+                <xref class="- topic/xref " format="dita" type="table">
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_values')"/>
+                  </xsl:attribute>
+                  <xsl:processing-instruction name="ditaot">
+                      <xsl:text>usertext</xsl:text>
+                    </xsl:processing-instruction>
+                  <xsl:text>values</xsl:text>
+                </xref>
+                 <xsl:text>()</xsl:text>
+              </codeph>
+              <xsl:text>Returns an array containing the constants of this enum type, in the order they are declared.</xsl:text>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </xsl:template>
+  <!--
+    Enum Method Detail
+  -->
+  <xsl:template name="add-enum-method-detail">
+    <table class=" topic/table " outputclass="enum_methods">
+        <xsl:attribute name="id">
+          <xsl:text>methods_values</xsl:text>
+        </xsl:attribute>
+        <tgroup class=" topic/tgroup " cols="1">
+          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+          <thead class=" topic/thead ">
+            <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+                <xsl:text>values</xsl:text>
+              </entry>
+            </row>
+          </thead>
+          <tbody class=" topic/tbody ">
+             <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeblock class=" pr-d/codeblock ">
+                 <xsl:value-of select="concat('public static ',@name, '[] values()')"/>
+                </codeblock>
+                <p class="- topic/p ">
+                 <xsl:text>Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to iterate over the constants as follows:</xsl:text>
+                </p>
+
+                <codeblock class=" pr-d/codeblock ">
+                  <xsl:value-of select="concat('for (',@name, ' c : ', @name,'.values())')"/>
+                  <xsl:text>&#10;    System.out.println(c);</xsl:text>
+                </codeblock>
+                <p class="- topic/p ">
+                  <b class=" hi-d/b ">  
+                    <xsl:text>Returns:</xsl:text>
+                  </b>
+                </p>
+                <p class="- topic/p ">
+                  <xsl:text>an array containing the constants of this enum type, in the order they are declared</xsl:text>
+                </p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    <p class="- topic/p "/>
+      <table class=" topic/table " outputclass="enum_methods">
+        <xsl:attribute name="id">
+          <xsl:text>methods_valueOf</xsl:text>
+        </xsl:attribute>
+        <tgroup class=" topic/tgroup " cols="1">
+          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+          <thead class=" topic/thead ">
+            <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+                <xsl:text>valuesOf</xsl:text>
+              </entry>
+            </row>
+          </thead>
+          <tbody class=" topic/tbody ">
+             <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeblock class=" pr-d/codeblock ">
+                 <xsl:value-of select="concat('public static ',@name, '[] values()')"/>
+                </codeblock>
+                <p class="- topic/p ">
+                 <xsl:text>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</xsl:text>
+                </p>
+
+                 <p class="- topic/p ">
+                  <b class=" hi-d/b ">
+                    <xsl:text>Parameters:</xsl:text>
+                  </b>
+                </p>
+                <p class="- topic/p ">
+                  <xsl:text>name - the name of the enum constant to be returned.</xsl:text>
+                </p>
+                <p class="- topic/p ">
+                  <b class=" hi-d/b ">  
+                    <xsl:text>Returns:</xsl:text>
+                  </b>
+                </p>
+                <p class="- topic/p ">
+                  <xsl:text>the enum constant with the specified name</xsl:text>
+                </p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    <p class="- topic/p "/>
+  </xsl:template>
+</xsl:stylesheet>
