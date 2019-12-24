@@ -121,10 +121,13 @@
   -->
   <xsl:template name="add-package-summary">
     <li class=" topic/li ">
-      <xref class="- topic/xref " format="dita" scope="local">
+      <xref class="- topic/xref " format="dita" scope="local" type="topic">
         <xsl:attribute name="href">
           <xsl:value-of select="concat('#', @name)"/>
         </xsl:attribute>
+        <xsl:processing-instruction name="ditaot">
+          <xsl:text>usertext</xsl:text>
+        </xsl:processing-instruction>
         <xsl:value-of select="@name"/>
       </xref>
       <xsl:if test="comment">
@@ -137,10 +140,13 @@
   -->
   <xsl:template name="add-items-list">
     <li class=" topic/li ">
-      <xref class="- topic/xref " format="dita" scope="local">
+      <xref class="- topic/xref " format="dita" scope="local" type="topic">
         <xsl:attribute name="href">
           <xsl:value-of select="concat('#', parent::*/@name, '.', @name)"/>
         </xsl:attribute>
+        <xsl:processing-instruction name="ditaot">
+          <xsl:text>usertext</xsl:text>
+        </xsl:processing-instruction>
         <xsl:value-of select="@name"/>
       </xref>
       <xsl:if test="comment">

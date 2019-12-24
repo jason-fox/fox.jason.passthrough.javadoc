@@ -17,7 +17,4 @@
 	</feature>
 	<feature extension="passthrough.pre" value="javadoc.process.pre"/>
 	<feature extension="passthrough.process" value="javadoc.process"/>
-
-	<!-- PDF extension point -->
-	<feature extension="dita.xsl.xslfo" value="xsl/xslfo.xsl" type="file"/>
 </plugin>
