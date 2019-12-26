@@ -8,4 +8,54 @@
                 xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
                 xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
                 version="2.0">
+  <!--
+     Interface Overview
+  -->
+  <xsl:template match="interface">
+    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " ditaarch:DITAArchVersion="1.3" props="javadoc">
+      <xsl:attribute name="id">
+        <xsl:value-of select="@qualified"/>
+      </xsl:attribute>
+      <xsl:attribute name="outputclass">
+        <xsl:text>interface</xsl:text>
+      </xsl:attribute>
+      <title class="- topic/title "><xsl:value-of select="concat('Interface ',@name)"/></title>
+      <titlealts class="- topic/titlealts ">
+        <navtitle class="- topic/navtitle ">
+          <xsl:value-of select="@name"/>
+        </navtitle>
+        <searchtitle class="- topic/searchtitle ">
+          <xsl:value-of select="@name"/>
+        </searchtitle>
+      </titlealts>
+      <body class="- topic/body ">
+        <codeblock class=" pr-d/codeblock ">
+          <xsl:value-of select="concat(@scope, ' interface ')"/>
+          <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
+        </codeblock>
+        <xsl:call-template name="add-description"/>
+      
+        <xsl:if test="method">
+          <!-- Interface Method Summary -->
+          <section class="- topic/section " outputclass="methods_summary">
+            <title class="- topic/title " >Method Summary</title>
+            <xsl:call-template name="add-method-summary"/>
+          </section>
+        </xsl:if>
+     
+        <xsl:if test="method">
+          <!-- Interface Method Details -->
+          <section class="- topic/section " outputclass="methods">
+            <xsl:attribute name="id">
+              <xsl:value-of select="concat(@qualified, '_methods')"/>
+            </xsl:attribute>
+            <title class="- topic/title " >Method Detail</title>
+            <xsl:apply-templates select="method">
+              <xsl:sort select="@name" />
+            </xsl:apply-templates>
+           </section>
+        </xsl:if>
+      </body>
+    </topic>
+  </xsl:template>
 </xsl:stylesheet>
