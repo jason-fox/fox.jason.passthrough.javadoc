@@ -40,15 +40,11 @@
           <ul class=" topic/ul ">
             <xsl:for-each select="//package/class/class[@qualified=$qualified]">
                <li class=" topic/li ">
-                <xref class="- topic/xref " format="dita" scope="local" type="topic">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="concat('#', parent::class/@qualified)"/>
-                  </xsl:attribute>
-                  <xsl:processing-instruction name="ditaot">
-                    <xsl:text>usertext</xsl:text>
-                  </xsl:processing-instruction>
-                  <xsl:value-of select="parent::class/@name"/>
-                </xref>
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'topic'" />
+                  <xsl:with-param name="href" select="concat('#', parent::class/@qualified)" />
+                  <xsl:with-param name="text" select="parent::class/@name" />
+                </xsl:call-template>
               </li>
             </xsl:for-each>
           </ul>
@@ -63,15 +59,11 @@
           <xsl:choose>
             <xsl:when test="//package/class[@qualified=$extends]">
                 <xsl:text> extends </xsl:text>
-                 <xref class="- topic/xref " format="dita" scope="local" type="topic">
-                 <xsl:attribute name="href">
-                    <xsl:value-of select="concat('#', class/@qualified)"/>
-                  </xsl:attribute>
-                  <xsl:processing-instruction name="ditaot">
-                    <xsl:text>usertext</xsl:text>
-                  </xsl:processing-instruction>
-                  <xsl:value-of select="replace(class/@qualified,'^.*\.','')"/>
-                </xref>
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'topic'" />
+                  <xsl:with-param name="href" select="concat('#', class/@qualified)" />
+                  <xsl:with-param name="text" select="replace(class/@qualified,'^.*\.','')" />
+                </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
               <xsl:value-of select="concat(' extends ', $extends)"/>
@@ -140,22 +132,20 @@
         <tbody class=" topic/tbody ">
           <xsl:for-each select="constructor">
             <xsl:sort select="@name"/>
+            <xsl:variable name="constructor" select="@name"/>
             <row class=" topic/row ">
                <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
                 <codeph class=" pr-d/codeph ">
-                  <xref class="- topic/xref " format="dita" type="table">
-                    <xsl:attribute name="href">
-                      <xsl:value-of select="concat('#', parent::*/@qualified, '/constructors_', @name)"/>
-                      <xsl:if test="count(../constructor[@name=@name])&gt;1">
-                        <xsl:value-of select="count(following-sibling::constructor[@name=@name])"/>
+                  <xsl:call-template name="add-link" >
+                    <xsl:with-param name="type" select="'table'" />
+                    <xsl:with-param name="href">
+                      <xsl:value-of select="concat('#', parent::*/@qualified, '/constructors_', $constructor)" />
+                      <xsl:if test="count(../constructor[@name=$constructor])&gt;1">
+                        <xsl:value-of select="count(following-sibling::constructor[@name=$constructor])"/>
                       </xsl:if>
-
-                    </xsl:attribute>
-                    <xsl:processing-instruction name="ditaot">
-                      <xsl:text>usertext</xsl:text>
-                    </xsl:processing-instruction>
-                    <xsl:value-of select="@name"/>
-                  </xref>
+                    </xsl:with-param>
+                    <xsl:with-param name="text" select="$constructor" />
+                  </xsl:call-template>
                   <xsl:call-template name="add-signature"/>
                 </codeph>
                   <xsl:if test="comment">
@@ -172,11 +162,12 @@
       Constructor Details
   -->
   <xsl:template match="constructor">
+    <xsl:variable name="constructor" select="@name"/>
     <table class=" topic/table " outputclass="constructor_details">
         <xsl:attribute name="id">
-          <xsl:value-of select="concat('constructors_',@name)"/>
-          <xsl:if test="count(../constructor[@name=@name])&gt;1">
-            <xsl:value-of select="count(following-sibling::constructor[@name=@name])"/>
+          <xsl:value-of select="concat('constructors_',$constructor)"/>
+          <xsl:if test="count(../constructor[@name=$constructor])&gt;1">
+            <xsl:value-of select="count(following-sibling::constructor[@name=$constructor])"/>
           </xsl:if>
         </xsl:attribute>
         <tgroup class=" topic/tgroup " cols="1">
@@ -184,7 +175,7 @@
           <thead class=" topic/thead ">
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-                <xsl:value-of select="@name"/>
+                <xsl:value-of select="$constructor"/>
               </entry>
             </row>
           </thead>
@@ -192,7 +183,7 @@
              <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
-                   <xsl:value-of select="@name"/>
+                   <xsl:value-of select="$constructor"/>
                    <xsl:call-template name="add-signature"/>
                 </codeph>
                 <p class="- topic/p ">

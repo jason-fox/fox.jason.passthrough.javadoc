@@ -31,6 +31,7 @@
         <tbody class=" topic/tbody ">
           <xsl:for-each select="method">
             <xsl:sort select="@name"/>
+            <xsl:variable name="method" select="@name"/>
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
@@ -40,23 +41,21 @@
               </entry>
                <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
                 <codeph class=" pr-d/codeph ">
-                  <xref class="- topic/xref " format="dita" type="table">
-                    <xsl:attribute name="href">
-                      <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_', @name)"/>
-                      <xsl:if test="count(../method[@name=@name])&gt;1">
-                        <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
+                  <xsl:call-template name="add-link" >
+                    <xsl:with-param name="type" select="'table'" />
+                    <xsl:with-param name="href">
+                      <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_', $method)"/>
+                      <xsl:if test="count(../method[@name=$method])&gt;1">
+                        <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
                       </xsl:if>
-                    </xsl:attribute>
-                    <xsl:processing-instruction name="ditaot">
-                      <xsl:text>usertext</xsl:text>
-                    </xsl:processing-instruction>
-                    <xsl:value-of select="@name"/>
-                  </xref>
+                    </xsl:with-param>
+                    <xsl:with-param name="text" select="$method" />
+                  </xsl:call-template>
                   <xsl:call-template name="add-signature"/>
                 </codeph>
-                  <xsl:if test="comment">
-                    <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
-                  </xsl:if>
+                <xsl:if test="comment">
+                  <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
+                </xsl:if>
               </entry>
             </row>
           </xsl:for-each>
@@ -99,15 +98,11 @@
               <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
                 <xsl:text>Methods inherited from class </xsl:text>
                 <xsl:value-of select="replace(@qualified,'\..*$','.')"/>
-                <xref class="- topic/xref " format="dita" scope="local" type="topic">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="concat('#', //package/class[@qualified=$extends]/@qualified)"/>
-                  </xsl:attribute>
-                  <xsl:processing-instruction name="ditaot">
-                    <xsl:text>usertext</xsl:text>
-                  </xsl:processing-instruction>
-                  <xsl:value-of select="//package/class[@qualified=$extends]/@name"/>
-                </xref>
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'topic'" />
+                  <xsl:with-param name="href" select="concat('#', //package/class[@qualified=$extends]/@qualified)" />
+                  <xsl:with-param name="text" select="//package/class[@qualified=$extends]/@name" />
+                </xsl:call-template>
               </entry>
             </row>
           </thead>
@@ -116,19 +111,18 @@
               <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
                 <xsl:for-each select="//package/class[@qualified=$extends]/method">
                   <xsl:sort select="@name"/>
+                  <xsl:variable name="method" select="@name"/>
                   <codeph class=" pr-d/codeph ">
-                    <xref class="- topic/xref " format="dita" scope="local" type="table">
-                      <xsl:attribute name="href">
-                        <xsl:value-of select="concat('#', $extends,'/methods_', @name)"/>
-                        <xsl:if test="count(../method[@name=@name])&gt;1">
-                          <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
+                    <xsl:call-template name="add-link" >
+                      <xsl:with-param name="type" select="'table'" />
+                      <xsl:with-param name="href">
+                        <xsl:value-of select="concat('#', $extends,'/methods_', $method)"/>
+                        <xsl:if test="count(../method[@name=$method])&gt;1">
+                          <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
                         </xsl:if>
-                      </xsl:attribute>
-                      <xsl:processing-instruction name="ditaot">
-                        <xsl:text>usertext</xsl:text>
-                      </xsl:processing-instruction>
-                      <xsl:value-of select="@name"/>
-                    </xref>
+                      </xsl:with-param>
+                      <xsl:with-param name="text" select="$method" />
+                    </xsl:call-template>
                   </codeph>
                   <xsl:if test="position() != last()">
                     <xsl:text>, </xsl:text>
@@ -164,45 +158,46 @@
       Method Details
   -->
   <xsl:template match="method">
-      <table class=" topic/table " outputclass="method_details">
-        <xsl:attribute name="id">
-          <xsl:value-of select="concat('methods_',@name)"/>
-          <xsl:if test="count(../method[@name=@name])&gt;1">
-            <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
-          </xsl:if>
-        </xsl:attribute>
-        <tgroup class=" topic/tgroup " cols="1">
-          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-          <thead class=" topic/thead ">
-            <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-                <xsl:value-of select="@name"/>
-              </entry>
-            </row>
-          </thead>
-          <tbody class=" topic/tbody ">
-             <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-                <codeblock class=" pr-d/codeblock ">
-                  <xsl:value-of select="concat(@scope, ' ')"/>
-                  <xsl:if test="@static='true'">
-                    <xsl:text>static </xsl:text>
-                  </xsl:if>
-                  <xsl:value-of select="replace(child::return/@qualified,'^.*\.','')"/>
-                  <xsl:apply-templates select="child::return/generic"/>
-                  <xsl:value-of select="concat(' ', @name)"/>
-                  <xsl:call-template name="add-signature"/>
-                </codeblock>
-                <p class="- topic/p ">
-                  <xsl:value-of select="comment"/>
-                </p>
-                <xsl:call-template name="parameter-description"/>
-                <xsl:call-template name="return-description"/>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+    <xsl:variable name="method" select="@name"/>
+    <table class=" topic/table " outputclass="method_details">
+      <xsl:attribute name="id">
+        <xsl:value-of select="concat('methods_', $method)"/>
+        <xsl:if test="count(../method[@name=$method])&gt;1">
+          <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
+        </xsl:if>
+      </xsl:attribute>
+      <tgroup class=" topic/tgroup " cols="1">
+        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+        <thead class=" topic/thead ">
+          <row class=" topic/row ">
+            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+              <xsl:value-of select="$method"/>
+            </entry>
+          </row>
+        </thead>
+        <tbody class=" topic/tbody ">
+           <row class=" topic/row ">
+            <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
+              <codeblock class=" pr-d/codeblock ">
+                <xsl:value-of select="concat(@scope, ' ')"/>
+                <xsl:if test="@static='true'">
+                  <xsl:text>static </xsl:text>
+                </xsl:if>
+                <xsl:value-of select="replace(child::return/@qualified,'^.*\.','')"/>
+                <xsl:apply-templates select="child::return/generic"/>
+                <xsl:value-of select="concat(' ', $method)"/>
+                <xsl:call-template name="add-signature"/>
+              </codeblock>
+              <p class="- topic/p ">
+                <xsl:value-of select="comment"/>
+              </p>
+              <xsl:call-template name="parameter-description"/>
+              <xsl:call-template name="return-description"/>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
     <p class="- topic/p "/>
   </xsl:template>
   <!--

@@ -13,15 +13,11 @@
   -->
   <xsl:template name="add-package-summary">
     <li class=" topic/li ">
-      <xref class="- topic/xref " format="dita" scope="local" type="topic">
-        <xsl:attribute name="href">
-          <xsl:value-of select="concat('#', @name)"/>
-        </xsl:attribute>
-        <xsl:processing-instruction name="ditaot">
-          <xsl:text>usertext</xsl:text>
-        </xsl:processing-instruction>
-        <xsl:value-of select="@name"/>
-      </xref>
+      <xsl:call-template name="add-link" >
+        <xsl:with-param name="type" select="'topic'" />
+        <xsl:with-param name="href" select="concat('#', @name)" />
+        <xsl:with-param name="text" select="@name" />
+      </xsl:call-template>
       <xsl:if test="comment">
         <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
       </xsl:if>
@@ -99,15 +95,11 @@
   -->
   <xsl:template name="add-items-list">
     <li class=" topic/li ">
-      <xref class="- topic/xref " format="dita" scope="local" type="topic">
-        <xsl:attribute name="href">
-          <xsl:value-of select="concat('#', parent::*/@name, '.', @name)"/>
-        </xsl:attribute>
-        <xsl:processing-instruction name="ditaot">
-          <xsl:text>usertext</xsl:text>
-        </xsl:processing-instruction>
-        <xsl:value-of select="@name"/>
-      </xref>
+      <xsl:call-template name="add-link" >
+        <xsl:with-param name="type" select="'topic'" />
+        <xsl:with-param name="href" select="concat('#', parent::*/@name, '.', @name)" />
+        <xsl:with-param name="text" select="@name" />
+      </xsl:call-template>
       <xsl:if test="comment">
         <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
       </xsl:if>

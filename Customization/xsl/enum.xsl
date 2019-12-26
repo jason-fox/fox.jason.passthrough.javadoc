@@ -76,16 +76,13 @@
     <ul class=" topic/ul ">
       <xsl:for-each select="constant">
         <xsl:sort select="@name"/>
+        <xsl:variable name="constant" select="@name"/>
         <li class=" topic/li ">
-          <xref class="- topic/xref " format="dita" type="topic">
-            <xsl:attribute name="href">
-              <xsl:value-of select="concat('#', parent::*/@qualified, '/enums_', @name)"/>
-            </xsl:attribute>
-            <xsl:processing-instruction name="ditaot">
-              <xsl:text>usertext</xsl:text>
-            </xsl:processing-instruction>
-            <xsl:value-of select="@name"/>
-          </xref>
+          <xsl:call-template name="add-link" >
+            <xsl:with-param name="type" select="'topic'" />
+            <xsl:with-param name="href" select="concat('#', parent::*/@qualified, '/enums_', $constant)" />
+            <xsl:with-param name="text" select="$constant" />
+          </xsl:call-template>
           <xsl:if test="comment">
             <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
           </xsl:if>
@@ -152,21 +149,17 @@
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
               <codeph class=" pr-d/codeph ">
-                <xsl:value-of select="concat('static ',@name)"/>
+                <xsl:value-of select="concat('static ', @name)"/>
               </codeph>
             </entry>
              <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
               <codeph class=" pr-d/codeph ">
-                <xref class="- topic/xref " format="dita" type="table">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_valueOf')"/>
-                  </xsl:attribute>
-                  <xsl:processing-instruction name="ditaot">
-                      <xsl:text>usertext</xsl:text>
-                    </xsl:processing-instruction>
-                  <xsl:text>valueOf</xsl:text>
-                </xref>
-                 <xsl:text>(java.lang.String name)</xsl:text>
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'table'" />
+                  <xsl:with-param name="href" select="concat('#', @qualified, '/methods_valueOf')" />
+                  <xsl:with-param name="text" select="'valueOf'" />
+                </xsl:call-template>
+                <xsl:text>(java.lang.String name)</xsl:text>
               </codeph>
               <xsl:text>Returns the enum constant of this type with the specified name.</xsl:text>
             </entry>
@@ -174,21 +167,17 @@
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
               <codeph class=" pr-d/codeph ">
-                <xsl:value-of select="concat('static ',@name, '[]')"/>
+                <xsl:value-of select="concat('static ', @name, '[]')"/>
               </codeph>
             </entry>
              <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
               <codeph class=" pr-d/codeph ">
-                <xref class="- topic/xref " format="dita" type="table">
-                  <xsl:attribute name="href">
-                    <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_values')"/>
-                  </xsl:attribute>
-                  <xsl:processing-instruction name="ditaot">
-                      <xsl:text>usertext</xsl:text>
-                    </xsl:processing-instruction>
-                  <xsl:text>values</xsl:text>
-                </xref>
-                 <xsl:text>()</xsl:text>
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'table'" />
+                  <xsl:with-param name="href" select="concat('#', @qualified, '/methods_values')" />
+                  <xsl:with-param name="text" select="'values'" />
+                </xsl:call-template>
+                <xsl:text>()</xsl:text>
               </codeph>
               <xsl:text>Returns an array containing the constants of this enum type, in the order they are declared.</xsl:text>
             </entry>
@@ -218,14 +207,14 @@
              <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeblock class=" pr-d/codeblock ">
-                 <xsl:value-of select="concat('public static ',@name, '[] values()')"/>
+                 <xsl:value-of select="concat('public static ', @name, '[] values()')"/>
                 </codeblock>
                 <p class="- topic/p ">
                  <xsl:text>Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to iterate over the constants as follows:</xsl:text>
                 </p>
 
                 <codeblock class=" pr-d/codeblock ">
-                  <xsl:value-of select="concat('for (',@name, ' c : ', @name,'.values())')"/>
+                  <xsl:value-of select="concat('for (', @name, ' c : ', @name, '.values())')"/>
                   <xsl:text>&#10;    System.out.println(c);</xsl:text>
                 </codeblock>
                 <p class="- topic/p ">

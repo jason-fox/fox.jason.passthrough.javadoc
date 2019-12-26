@@ -49,4 +49,23 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template name="add-link">
+    <xsl:param name = "type" />
+    <xsl:param name = "href" />
+    <xsl:param name = "text" />
+
+    <xref class="- topic/xref " format="dita" scope="local">
+      <xsl:attribute name="type">
+        <xsl:value-of select="$type"/>
+      </xsl:attribute>
+      <xsl:attribute name="href">
+        <xsl:value-of select="$href"/>
+      </xsl:attribute>
+      <xsl:processing-instruction name="ditaot">
+        <xsl:text>usertext</xsl:text>
+      </xsl:processing-instruction>
+      <xsl:value-of select="$text"/>
+    </xref>
+  </xsl:template>
+
 </xsl:stylesheet>
