@@ -64,6 +64,102 @@
       </tgroup>
     </table>
   </xsl:template>
+  <xsl:template name="add-inherited-method-summary">
+    <xsl:variable name="extends">
+      <xsl:value-of select="class/@qualified"/>
+    </xsl:variable>
+
+    <xsl:choose>
+      <xsl:when test="//package/class[@qualified=$extends]">
+        <xsl:call-template name="inheritance-method-summary">
+          <xsl:with-param name="extends" select = "//package/class[@qualified=$extends]/@qualified" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="inheritance-java-lang" >
+          <xsl:with-param name="extends" select = "$extends" />
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+
+
+  <!--
+    List methods from inherited classes
+  -->
+  <xsl:template name="inheritance-method-summary">
+    <xsl:param name = "extends" />
+      <p class="- topic/p "/>
+      <table class=" topic/table " outputclass="method_details">
+        <tgroup class=" topic/tgroup " cols="1">
+          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+          <thead class=" topic/thead ">
+            <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+                <xsl:text>Methods inherited from class </xsl:text>
+                <xsl:value-of select="replace(@qualified,'\..*$','.')"/>
+                <xref class="- topic/xref " format="dita" scope="local" type="topic">
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="concat('#', //package/class[@qualified=$extends]/@qualified)"/>
+                  </xsl:attribute>
+                  <xsl:processing-instruction name="ditaot">
+                    <xsl:text>usertext</xsl:text>
+                  </xsl:processing-instruction>
+                  <xsl:value-of select="//package/class[@qualified=$extends]/@name"/>
+                </xref>
+              </entry>
+            </row>
+          </thead>
+          <tbody class=" topic/tbody ">
+             <row class=" topic/row ">
+              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+                <xsl:for-each select="//package/class[@qualified=$extends]/method">
+                  <xsl:sort select="@name"/>
+                  <codeph class=" pr-d/codeph ">
+                    <xref class="- topic/xref " format="dita" scope="local" type="table">
+                      <xsl:attribute name="href">
+                        <xsl:value-of select="concat('#', $extends,'/methods_', @name)"/>
+                        <xsl:if test="count(../method[@name=@name])&gt;1">
+                          <xsl:value-of select="count(following-sibling::method[@name=@name])"/>
+                        </xsl:if>
+                      </xsl:attribute>
+                      <xsl:processing-instruction name="ditaot">
+                        <xsl:text>usertext</xsl:text>
+                      </xsl:processing-instruction>
+                      <xsl:value-of select="@name"/>
+                    </xref>
+                  </codeph>
+                  <xsl:if test="position() != last()">
+                    <xsl:text>, </xsl:text>
+                  </xsl:if>
+                </xsl:for-each>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+
+      <xsl:variable name="reextends">
+        <xsl:value-of select="//package/class[@qualified=$extends]/class/@qualified"/>
+      </xsl:variable>
+      <xsl:choose>
+        <xsl:when test="//package/class[@qualified=$reextends]">
+          <xsl:call-template name="inheritance-method-summary" >
+            <xsl:with-param name="extends" select = "//package/class[@qualified=$reextends]/@qualified" />
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="inheritance-java-lang" >
+            <xsl:with-param name="extends" select = "$reextends" />
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+  </xsl:template>
+
+  
+
   <!--
       Method Details
   -->

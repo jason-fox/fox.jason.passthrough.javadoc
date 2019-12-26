@@ -16,6 +16,7 @@
   <xsl:include href="../Customization/xsl/interface.xsl"/>
   <xsl:include href="../Customization/xsl/method.xsl"/>
   <xsl:include href="../Customization/xsl/package.xsl"/>
+  <xsl:include href="../Customization/xsl/java-lang.xsl"/>
 
   <!--
      Overall API Reference listing.

@@ -29,10 +29,54 @@
         </searchtitle>
       </titlealts>
       <body class="- topic/body ">
+
+        <xsl:variable name="qualified">
+          <xsl:value-of select="@qualified"/>
+        </xsl:variable>
+        <xsl:if test="//package/class/class[@qualified=$qualified]">
+          <p class="- topic/p ">
+            <b class=" hi-d/b ">Direct Known Subclasses:</b>
+          </p>
+          <ul class=" topic/ul ">
+            <xsl:for-each select="//package/class/class[@qualified=$qualified]">
+               <li class=" topic/li ">
+                <xref class="- topic/xref " format="dita" scope="local" type="topic">
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="concat('#', parent::class/@qualified)"/>
+                  </xsl:attribute>
+                  <xsl:processing-instruction name="ditaot">
+                    <xsl:text>usertext</xsl:text>
+                  </xsl:processing-instruction>
+                  <xsl:value-of select="parent::class/@name"/>
+                </xref>
+              </li>
+            </xsl:for-each>
+          </ul>
+        </xsl:if>
+
         <codeblock class=" pr-d/codeblock ">
           <xsl:value-of select="concat(@scope, ' ', name(), ' ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
-          <xsl:value-of select="concat(' extends ', class/@qualified)"/>
+          <xsl:variable name="extends">
+              <xsl:value-of select="class/@qualified"/>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="//package/class[@qualified=$extends]">
+                <xsl:text> extends </xsl:text>
+                 <xref class="- topic/xref " format="dita" scope="local" type="topic">
+                 <xsl:attribute name="href">
+                    <xsl:value-of select="concat('#', class/@qualified)"/>
+                  </xsl:attribute>
+                  <xsl:processing-instruction name="ditaot">
+                    <xsl:text>usertext</xsl:text>
+                  </xsl:processing-instruction>
+                  <xsl:value-of select="replace(class/@qualified,'^.*\.','')"/>
+                </xref>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="concat(' extends ', $extends)"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </codeblock>
         <xsl:call-template name="add-description"/>
         <xsl:if test="constructor">
@@ -42,13 +86,14 @@
             <xsl:call-template name="add-constructor-summary"/>
           </section>
         </xsl:if>
-        <xsl:if test="method">
           <!-- Class Method Summary -->
            <section class="- topic/section " outputclass="methods_summary">
             <title class="- topic/title " >Method Summary</title>
-            <xsl:call-template name="add-method-summary"/>
+            <xsl:if test="method">
+              <xsl:call-template name="add-method-summary"/>
+            </xsl:if>
+            <xsl:call-template name="add-inherited-method-summary"/>
           </section>
-        </xsl:if>
         <xsl:if test="constructor">
           <!-- Constructor Detail -->
           <section class="- topic/section " outputclass="constructors">
