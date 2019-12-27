@@ -30,17 +30,54 @@
       </titlealts>
       <body class="- topic/body ">
 
-        <xsl:variable name="qualified">
-          <xsl:value-of select="@qualified"/>
-        </xsl:variable>
-        <xsl:if test="//package/class/class[@qualified=$qualified]">
+        <xsl:variable name="class" select="@qualified"/>
+        <xsl:variable name="extends" select="class/@qualified"/>
+
+        <xsl:if test="interface or //package/class[@qualified=$extends]/interface or @externalizable='true' or @serializable='true' ">
+          <p class="- topic/p ">
+            <b class=" hi-d/b ">
+              <xsl:text>All Implemented Interfaces:</xsl:text>
+            </b>
+          </p>
+          <ul class=" topic/ul ">
+            <xsl:for-each select="interface">
+              <li class=" topic/li ">
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'topic'" />
+                  <xsl:with-param name="href" select="concat('#', @qualified)" />
+                  <xsl:with-param name="text" select="replace(@qualified,'^.*\.','')" />
+                </xsl:call-template>
+              </li>
+            </xsl:for-each>
+            <xsl:for-each select="//package/class[@qualified=$extends]/interface">
+              <li class=" topic/li ">
+                <xsl:call-template name="add-link" >
+                  <xsl:with-param name="type" select="'topic'" />
+                  <xsl:with-param name="href" select="concat('#', @qualified)" />
+                  <xsl:with-param name="text" select="replace(@qualified,'^.*\.','')" />
+                </xsl:call-template>
+              </li>
+            </xsl:for-each>
+            <xsl:if test="@externalizable='true'">
+              <li class=" topic/li ">
+                <xsl:text>java.io.Externalizable</xsl:text>
+              </li>
+            </xsl:if>
+            <xsl:if test="@serializable='true'">
+              <li class=" topic/li ">
+                <xsl:text>java.io.Serializable</xsl:text>
+              </li>
+            </xsl:if> 
+          </ul>
+        </xsl:if>
+        <xsl:if test="//package/class/class[@qualified=$class]">
           <p class="- topic/p ">
             <b class=" hi-d/b ">
               <xsl:text>Direct Known Subclasses:</xsl:text>
             </b>
           </p>
           <ul class=" topic/ul ">
-            <xsl:for-each select="//package/class/class[@qualified=$qualified]">
+            <xsl:for-each select="//package/class/class[@qualified=$class]">
                <li class=" topic/li ">
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'topic'" />
@@ -55,9 +92,6 @@
         <codeblock class=" pr-d/codeblock ">
           <xsl:value-of select="concat(@scope, ' ', name(), ' ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
-          <xsl:variable name="extends">
-              <xsl:value-of select="class/@qualified"/>
-          </xsl:variable>
           <xsl:choose>
             <xsl:when test="//package/class[@qualified=$extends]">
                 <xsl:text> extends </xsl:text>
@@ -106,7 +140,7 @@
           <!-- field Detail -->
           <section class="- topic/section " outputclass="fields">
             <xsl:attribute name="id">
-              <xsl:value-of select="concat(@qualified, '_fields')"/>
+              <xsl:value-of select="concat($class, '_fields')"/>
             </xsl:attribute>
             <title class="- topic/title " >
               <xsl:text>Field Detail</xsl:text>
@@ -121,7 +155,7 @@
           <!-- Constructor Detail -->
           <section class="- topic/section " outputclass="constructors">
             <xsl:attribute name="id">
-              <xsl:value-of select="concat(@qualified, '_constructors')"/>
+              <xsl:value-of select="concat($class, '_constructors')"/>
             </xsl:attribute>
             <title class="- topic/title " >
               <xsl:text>Constructor Detail</xsl:text>
@@ -136,7 +170,7 @@
           <!-- Method Detail-->
           <section class="- topic/section " outputclass="methods">
             <xsl:attribute name="id">
-              <xsl:value-of select="concat(@qualified, '_methods')"/>
+              <xsl:value-of select="concat($class, '_methods')"/>
             </xsl:attribute>
             <title class="- topic/title " >
               <xsl:text>Method Detail</xsl:text>

@@ -168,6 +168,18 @@
       <p class="- topic/p ">
         <xsl:value-of select="comment"/>
       </p>
+      <xsl:if test="annotation">
+        <p class="- topic/p ">
+          <b class=" hi-d/b ">
+            <xsl:text>Overrides:</xsl:text>
+          </b>
+        </p>
+        <xsl:call-template name="add-overrides">
+          <xsl:with-param name="method" select="$method"/>
+          <xsl:with-param name="signature" select="@signature"/>
+          <xsl:with-param name="extends" select="../class/@qualified"/>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:call-template name="parameter-description"/>
       <xsl:call-template name="return-description"/>
     </xsl:variable>
@@ -259,6 +271,36 @@
         </xsl:choose>
       </p>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="add-overrides">
+      <xsl:param name="method"/>
+      <xsl:param name="signature"/>
+      <xsl:param name="extends"/>
+    
+      
+      <p class="- topic/p ">
+        <codeph class=" pr-d/codeph ">
+          <xsl:call-template name="add-link" >
+            <xsl:with-param name="type" select="'table'" />
+            <xsl:with-param name="href">
+              <xsl:value-of select="concat('#', $extends, '/methods_', $method)" />
+              <xsl:if test="count(//package/class[@qualified=$extends]/method[@name=$method])&gt;1">
+                <xsl:value-of select="count(//package/class[@qualified=$extends]/method[@name=$method and @signature=$signature]/following-sibling::method[@name=$method])"/>
+              </xsl:if>
+            </xsl:with-param>
+            <xsl:with-param name="text" select="replace(@qualified,'^.*\.','')" />
+          </xsl:call-template>
+        </codeph>
+        <xsl:text> in class </xsl:text>
+         <codeph class=" pr-d/codeph ">
+          <xsl:call-template name="add-link" >
+            <xsl:with-param name="type" select="'topic'" />
+            <xsl:with-param name="href" select="concat('#', $extends)" />
+            <xsl:with-param name="text" select="replace($extends,'^.*\.','')" />
+          </xsl:call-template>
+        </codeph>
+      </p>
   </xsl:template>
 
   <!--

@@ -45,13 +45,26 @@
       </titlealts>
       <body class="- topic/body ">
         <xsl:call-template name="add-description"/>
-        <xsl:if test="class">
+        <xsl:if test="class[@exception='false']">
           <section class="- topic/section " outputclass="class_summary">
             <title class="- topic/title " >
               <xsl:text>Class Summary</xsl:text>
             </title>
             <ul class=" topic/ul ">
-              <xsl:for-each select="class">
+              <xsl:for-each select="class[@exception='false']">
+                <xsl:sort select="@name"/>
+                <xsl:call-template name="add-items-list"/>
+              </xsl:for-each>
+            </ul>
+          </section>
+        </xsl:if>
+         <xsl:if test="class[@exception='true']">
+          <section class="- topic/section " outputclass="class_summary">
+            <title class="- topic/title " >
+              <xsl:text>Exception Summary</xsl:text>
+            </title>
+            <ul class=" topic/ul ">
+              <xsl:for-each select="class[@exception='true']">
                 <xsl:sort select="@name"/>
                 <xsl:call-template name="add-items-list"/>
               </xsl:for-each>
