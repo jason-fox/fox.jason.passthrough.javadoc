@@ -27,7 +27,7 @@
 				<echo taskname="javadoc" level="info" message="Processing @{src}"/>
 				<xslt taskname="javadoc" in="@{src}" out="@{dest}" force="true" style="${dita.plugin.fox.jason.passthrough.javadoc.dir}/xsl/javadoc2dita.xsl"/>
 
-				<copy file="@{dest}" tofile="${output.dir}/test.xml"/>
+				<!--copy file="@{dest}" tofile="${output.dir}/test.xml"/-->
 			</sequential>
 		</macrodef>
 	</target>
