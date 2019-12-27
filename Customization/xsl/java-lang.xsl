@@ -26,25 +26,14 @@
   <xsl:template name="inheritance-methods-object">
     <p class="- topic/p "/>
     <table class=" topic/table " outputclass="method_details">
-      <tgroup class=" topic/tgroup " cols="1">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              <xsl:text>Methods inherited from class java.lang.Object</xsl:text>
-            </entry>
-          </row>
-        </thead>
-        <tbody class=" topic/tbody ">
-           <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              <codeph class=" pr-d/codeph ">
-                clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait
-              </codeph>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
+      <xsl:call-template name="mini-table" >
+        <xsl:with-param name="header" select="'Methods inherited from class java.lang.Object'"/>
+        <xsl:with-param name="body">
+          <codeph class=" pr-d/codeph ">
+            <xsl:text>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</xsl:text>
+          </codeph>
+        </xsl:with-param>
+      </xsl:call-template>
     </table>
   </xsl:template>
     <!--
@@ -53,25 +42,14 @@
   <xsl:template name="inheritance-methods-exception">
     <p class="- topic/p "/>
     <table class=" topic/table " outputclass="method_details">
-      <tgroup class=" topic/tgroup " cols="1">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              <xsl:text>Methods inherited from class java.lang.Throwable</xsl:text>
-            </entry>
-          </row>
-        </thead>
-        <tbody class=" topic/tbody ">
-           <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              <codeph class=" pr-d/codeph ">
-                addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace, toString
-              </codeph>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
+      <xsl:call-template name="mini-table" >
+        <xsl:with-param name="header" select="'Methods inherited from class java.lang.Throwable'"/>
+        <xsl:with-param name="body">
+          <codeph class=" pr-d/codeph ">
+             <xsl:text>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace, toString</xsl:text>
+          </codeph>
+        </xsl:with-param>
+      </xsl:call-template>
     </table>
   </xsl:template>
 </xsl:stylesheet>

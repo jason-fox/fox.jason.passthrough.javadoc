@@ -82,83 +82,92 @@
     </xsl:choose>
   </xsl:template>
 
-
-
   <!--
     List methods from inherited classes
   -->
   <xsl:template name="inheritance-method-summary">
     <xsl:param name = "extends" />
-      <p class="- topic/p "/>
-      <table class=" topic/table " outputclass="method_details">
-        <tgroup class=" topic/tgroup " cols="1">
-          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-          <thead class=" topic/thead ">
-            <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-                <xsl:text>Methods inherited from class </xsl:text>
-                <xsl:value-of select="replace(@qualified,'\..*$','.')"/>
-                <xsl:call-template name="add-link" >
-                  <xsl:with-param name="type" select="'topic'" />
-                  <xsl:with-param name="href" select="concat('#', //package/class[@qualified=$extends]/@qualified)" />
-                  <xsl:with-param name="text" select="//package/class[@qualified=$extends]/@name" />
-                </xsl:call-template>
-              </entry>
-            </row>
-          </thead>
-          <tbody class=" topic/tbody ">
-             <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-                <xsl:for-each select="//package/class[@qualified=$extends]/method">
-                  <xsl:sort select="@name"/>
-                  <xsl:variable name="method" select="@name"/>
-                  <codeph class=" pr-d/codeph ">
-                    <xsl:call-template name="add-link" >
-                      <xsl:with-param name="type" select="'table'" />
-                      <xsl:with-param name="href">
-                        <xsl:value-of select="concat('#', $extends,'/methods_', $method)"/>
-                        <xsl:if test="count(../method[@name=$method])&gt;1">
-                          <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
-                        </xsl:if>
-                      </xsl:with-param>
-                      <xsl:with-param name="text" select="$method" />
-                    </xsl:call-template>
-                  </codeph>
-                  <xsl:if test="position() != last()">
-                    <xsl:text>, </xsl:text>
-                  </xsl:if>
-                </xsl:for-each>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+      
+    <xsl:variable name="inherited_methods">
+      <xsl:text>Methods inherited from class </xsl:text>
+      <xsl:value-of select="replace(@qualified,'\..*$','.')"/>
+      <xsl:call-template name="add-link" >
+        <xsl:with-param name="type" select="'topic'" />
+        <xsl:with-param name="href" select="concat('#', //package/class[@qualified=$extends]/@qualified)" />
+        <xsl:with-param name="text" select="//package/class[@qualified=$extends]/@name" />
+      </xsl:call-template>
+    </xsl:variable>
 
+    <xsl:variable name="inherited_methods_details">
+      <xsl:for-each select="//package/class[@qualified=$extends]/method">
+        <xsl:sort select="@name"/>
+        <xsl:variable name="method" select="@name"/>
+        <codeph class=" pr-d/codeph ">
+          <xsl:call-template name="add-link" >
+            <xsl:with-param name="type" select="'table'" />
+            <xsl:with-param name="href">
+              <xsl:value-of select="concat('#', $extends,'/methods_', $method)"/>
+              <xsl:if test="count(../method[@name=$method])&gt;1">
+                <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
+              </xsl:if>
+            </xsl:with-param>
+            <xsl:with-param name="text" select="$method" />
+          </xsl:call-template>
+        </codeph>
+        <xsl:if test="position() != last()">
+          <xsl:text>, </xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
 
-      <xsl:variable name="reextends">
-        <xsl:value-of select="//package/class[@qualified=$extends]/class/@qualified"/>
-      </xsl:variable>
-      <xsl:choose>
-        <xsl:when test="//package/class[@qualified=$reextends]">
-          <xsl:call-template name="inheritance-method-summary" >
-            <xsl:with-param name="extends" select = "//package/class[@qualified=$reextends]/@qualified" />
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="inheritance-java-lang" >
-            <xsl:with-param name="extends" select = "$reextends" />
-          </xsl:call-template>
-        </xsl:otherwise>
-      </xsl:choose>
+    <p class="- topic/p "/>
+    <table class=" topic/table " outputclass="method_details">
+      <xsl:call-template name="mini-table" >
+        <xsl:with-param name="header" select="$inherited_methods"/>
+        <xsl:with-param name="body" select="$inherited_methods_details"/>
+      </xsl:call-template>
+    </table>
+
+    <xsl:variable name="reextends">
+      <xsl:value-of select="//package/class[@qualified=$extends]/class/@qualified"/>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="//package/class[@qualified=$reextends]">
+        <xsl:call-template name="inheritance-method-summary" >
+          <xsl:with-param name="extends" select = "//package/class[@qualified=$reextends]/@qualified" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="inheritance-java-lang" >
+          <xsl:with-param name="extends" select = "$reextends" />
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
-
-  
 
   <!--
       Method Details
   -->
   <xsl:template match="method">
     <xsl:variable name="method" select="@name"/>
+    <xsl:variable name="method_details">
+      <codeblock class=" pr-d/codeblock ">
+        <xsl:value-of select="concat(@scope, ' ')"/>
+        <xsl:if test="@static='true'">
+          <xsl:text>static </xsl:text>
+        </xsl:if>
+        <xsl:value-of select="replace(child::return/@qualified,'^.*\.','')"/>
+        <xsl:apply-templates select="child::return/generic"/>
+        <xsl:value-of select="concat(' ', $method)"/>
+        <xsl:call-template name="add-signature"/>
+      </codeblock>
+      <p class="- topic/p ">
+        <xsl:value-of select="comment"/>
+      </p>
+      <xsl:call-template name="parameter-description"/>
+      <xsl:call-template name="return-description"/>
+    </xsl:variable>
+
     <table class=" topic/table " outputclass="method_details">
       <xsl:attribute name="id">
         <xsl:value-of select="concat('methods_', $method)"/>
@@ -166,40 +175,16 @@
           <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
         </xsl:if>
       </xsl:attribute>
-      <tgroup class=" topic/tgroup " cols="1">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              <xsl:value-of select="$method"/>
-            </entry>
-          </row>
-        </thead>
-        <tbody class=" topic/tbody ">
-           <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-              <codeblock class=" pr-d/codeblock ">
-                <xsl:value-of select="concat(@scope, ' ')"/>
-                <xsl:if test="@static='true'">
-                  <xsl:text>static </xsl:text>
-                </xsl:if>
-                <xsl:value-of select="replace(child::return/@qualified,'^.*\.','')"/>
-                <xsl:apply-templates select="child::return/generic"/>
-                <xsl:value-of select="concat(' ', $method)"/>
-                <xsl:call-template name="add-signature"/>
-              </codeblock>
-              <p class="- topic/p ">
-                <xsl:value-of select="comment"/>
-              </p>
-              <xsl:call-template name="parameter-description"/>
-              <xsl:call-template name="return-description"/>
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
+      <xsl:call-template name="mini-table" >
+        <xsl:with-param name="header">
+          <xsl:value-of select="$method"/>
+        </xsl:with-param>
+        <xsl:with-param name="body" select="$method_details"/>
+      </xsl:call-template>
     </table>
     <p class="- topic/p "/>
   </xsl:template>
+
   <!--
     Create a method signature based on the parameter set
   -->
@@ -216,6 +201,7 @@
     </xsl:for-each>
     <xsl:text>)</xsl:text>
   </xsl:template>
+
   <!--
     Detailed description of each parameter
   -->
@@ -267,6 +253,7 @@
       </p>
     </xsl:if>
   </xsl:template>
+  
   <!--
       Add Generics to signatures
   -->
@@ -281,4 +268,5 @@
     <xsl:param name="text" as="xs:string"/>
     <xsl:value-of select="replace($text,'\.','.&#8203;')"/>
   </xsl:function>
+
 </xsl:stylesheet>

@@ -49,10 +49,10 @@
           <section class="- topic/section " outputclass="class_summary">
             <title class="- topic/title " >Class Summary</title>
             <ul class=" topic/ul ">
-            <xsl:for-each select="class">
-              <xsl:sort select="@name"/>
-              <xsl:call-template name="add-items-list"/>
-            </xsl:for-each>
+              <xsl:for-each select="class">
+                <xsl:sort select="@name"/>
+                <xsl:call-template name="add-items-list"/>
+              </xsl:for-each>
             </ul>
           </section>
         </xsl:if>
@@ -60,10 +60,10 @@
            <section class="- topic/section " outputclass="interfaces_summary">
             <title class="- topic/title " >Interface Summary</title>
             <ul class=" topic/ul ">
-            <xsl:for-each select="interface">
-              <xsl:sort select="@name"/>
-              <xsl:call-template name="add-items-list"/>
-            </xsl:for-each>
+              <xsl:for-each select="interface">
+                <xsl:sort select="@name"/>
+                <xsl:call-template name="add-items-list"/>
+              </xsl:for-each>
             </ul>
           </section>
         </xsl:if>
@@ -71,10 +71,10 @@
            <section class="- topic/section " outputclass="enums_summary">
             <title class="- topic/title " >Enumeration Summary</title>
             <ul class=" topic/ul ">
-            <xsl:for-each select="enum">
-              <xsl:sort select="@name"/>
-              <xsl:call-template name="add-items-list"/>
-            </xsl:for-each>
+              <xsl:for-each select="enum">
+                <xsl:sort select="@name"/>
+                <xsl:call-template name="add-items-list"/>
+              </xsl:for-each>
             </ul>
           </section>
         </xsl:if>

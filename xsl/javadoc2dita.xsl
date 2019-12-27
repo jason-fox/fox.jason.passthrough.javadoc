@@ -68,4 +68,27 @@
     </xref>
   </xsl:template>
 
+  <xsl:template name="mini-table">
+    <xsl:param name = "header" />
+    <xsl:param name = "body" />
+    <tgroup class=" topic/tgroup " cols="1">
+      <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+      <thead class=" topic/thead ">
+        <row class=" topic/row ">
+          <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+            <xsl:copy-of select="$header"/>
+          </entry>
+        </row>
+      </thead>
+      <tbody class=" topic/tbody ">
+         <row class=" topic/row ">
+          <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+            <xsl:copy-of select="$body"/>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+
+  </xsl:template>
+
 </xsl:stylesheet>

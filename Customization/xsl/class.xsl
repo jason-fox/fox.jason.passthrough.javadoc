@@ -120,7 +120,7 @@
   -->
   <xsl:template name="add-constructor-summary">
     <table class=" topic/table " outputclass="constructor_summary">
-      <tgroup class=" topic/tgroup " cols="2">
+      <tgroup class=" topic/tgroup " cols="1">
         <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
         <thead class=" topic/thead ">
           <row class=" topic/row ">
@@ -134,7 +134,7 @@
             <xsl:sort select="@name"/>
             <xsl:variable name="constructor" select="@name"/>
             <row class=" topic/row ">
-               <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
+               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
@@ -148,9 +148,9 @@
                   </xsl:call-template>
                   <xsl:call-template name="add-signature"/>
                 </codeph>
-                  <xsl:if test="comment">
-                    <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
-                  </xsl:if>
+                <xsl:if test="comment">
+                  <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
+                </xsl:if>
               </entry>
             </row>
           </xsl:for-each>
@@ -163,38 +163,31 @@
   -->
   <xsl:template match="constructor">
     <xsl:variable name="constructor" select="@name"/>
+    <xsl:variable name="constructor_details">
+      <codeph class=" pr-d/codeph ">
+         <xsl:value-of select="$constructor"/>
+         <xsl:call-template name="add-signature"/>
+      </codeph>
+      <p class="- topic/p ">
+        <xsl:value-of select="comment"/>
+      </p>
+      <xsl:call-template name="parameter-description"/>
+    </xsl:variable>
+
     <table class=" topic/table " outputclass="constructor_details">
-        <xsl:attribute name="id">
-          <xsl:value-of select="concat('constructors_',$constructor)"/>
-          <xsl:if test="count(../constructor[@name=$constructor])&gt;1">
-            <xsl:value-of select="count(following-sibling::constructor[@name=$constructor])"/>
-          </xsl:if>
-        </xsl:attribute>
-        <tgroup class=" topic/tgroup " cols="1">
-          <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-          <thead class=" topic/thead ">
-            <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-                <xsl:value-of select="$constructor"/>
-              </entry>
-            </row>
-          </thead>
-          <tbody class=" topic/tbody ">
-             <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-                <codeph class=" pr-d/codeph ">
-                   <xsl:value-of select="$constructor"/>
-                   <xsl:call-template name="add-signature"/>
-                </codeph>
-                <p class="- topic/p ">
-                  <xsl:value-of select="comment"/>
-                </p>
-                <xsl:call-template name="parameter-description"/>
-              </entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
+      <xsl:attribute name="id">
+        <xsl:value-of select="concat('constructors_',$constructor)"/>
+        <xsl:if test="count(../constructor[@name=$constructor])&gt;1">
+          <xsl:value-of select="count(following-sibling::constructor[@name=$constructor])"/>
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:call-template name="mini-table" >
+        <xsl:with-param name="header">
+          <xsl:value-of select="$constructor"/>
+        </xsl:with-param>
+        <xsl:with-param name="body" select="$constructor_details"/>
+      </xsl:call-template>
+    </table>
     <p class="- topic/p "/>
   </xsl:template>
 </xsl:stylesheet>
