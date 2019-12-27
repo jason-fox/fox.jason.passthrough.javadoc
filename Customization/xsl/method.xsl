@@ -35,7 +35,10 @@
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
-                  <xsl:value-of select="dita-ot:addZeroWidthSpaces(child::return/@qualified)"/>
+                  <xsl:call-template name="add-modifiers"/>
+                  <xsl:call-template name="add-class-link">
+                    <xsl:with-param name="class" select="child::return/@qualified"/>
+                  </xsl:call-template>
                   <xsl:apply-templates select="child::return/generic"/>
                 </codeph>
               </entry>
@@ -153,9 +156,7 @@
     <xsl:variable name="method_details">
       <codeblock class=" pr-d/codeblock ">
         <xsl:value-of select="concat(@scope, ' ')"/>
-        <xsl:if test="@static='true'">
-          <xsl:text>static </xsl:text>
-        </xsl:if>
+        <xsl:call-template name="add-modifiers"/>
         <xsl:variable name="class" select="child::return/@qualified"/>
         <xsl:call-template name="add-class-link">
           <xsl:with-param name="class" select="$class"/>
@@ -300,13 +301,36 @@
           <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$class">
+       <xsl:when test="starts-with($class,'java.lang.')">
          <xsl:value-of select="dita-ot:addZeroWidthSpaces($class)"/>
+      </xsl:when>
+      <xsl:when test="$class">
+         <xsl:value-of select="replace($class,'^.*\.','')"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>????</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="add-modifiers">
+    <xsl:if test="parent::*/name()='class'">
+      <xsl:if test="@abstract='true'">
+        <xsl:text>abstract </xsl:text>
+      </xsl:if>
+      <xsl:if test="@static='true'">
+        <xsl:text>static </xsl:text>
+      </xsl:if>
+      <xsl:if test="@final='true'">
+        <xsl:text>final </xsl:text>
+      </xsl:if>
+      <xsl:if test="@synchronized='true'">
+        <xsl:text>synchronized </xsl:text>
+      </xsl:if>
+      <xsl:if test="@native='true'">
+        <xsl:text>native </xsl:text>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
   <xsl:function name="dita-ot:addZeroWidthSpaces">
