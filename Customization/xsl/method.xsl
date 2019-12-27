@@ -21,10 +21,10 @@
         <thead class=" topic/thead ">
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              Modifier and Type
+               <xsl:text>Modifier and Type</xsl:text>
             </entry>
             <entry class=" topic/entry " colname="c2" dita-ot:x="2" align="left">
-              Method and Description
+               <xsl:text>Method and Description</xsl:text>
             </entry>
           </row>
         </thead>
@@ -156,7 +156,10 @@
         <xsl:if test="@static='true'">
           <xsl:text>static </xsl:text>
         </xsl:if>
-        <xsl:value-of select="replace(child::return/@qualified,'^.*\.','')"/>
+        <xsl:variable name="class" select="child::return/@qualified"/>
+        <xsl:call-template name="add-class-link">
+          <xsl:with-param name="class" select="$class"/>
+        </xsl:call-template>
         <xsl:apply-templates select="child::return/generic"/>
         <xsl:value-of select="concat(' ', $method)"/>
         <xsl:call-template name="add-signature"/>
@@ -191,7 +194,10 @@
   <xsl:template name="add-signature">
     <xsl:text>(</xsl:text>
     <xsl:for-each select="parameter">
-      <xsl:value-of select="replace(type/@qualified,'^.*\.','')"/>
+      <xsl:variable name="class" select="type/@qualified"/>
+      <xsl:call-template name="add-class-link">
+        <xsl:with-param name="class" select="$class"/>
+      </xsl:call-template>
       <xsl:apply-templates select="type/generic"/>
       <xsl:value-of select="type/@dimension"/>
       <xsl:value-of select="concat(' ', @name)"/>
@@ -253,15 +259,54 @@
       </p>
     </xsl:if>
   </xsl:template>
-  
+
   <!--
       Add Generics to signatures
   -->
   <xsl:template match="generic">
     <xsl:text>&#8203;&lt;</xsl:text>
-    <xsl:value-of select="replace(@qualified,'^.*\.','')"/>
+    <xsl:variable name="class" select="@qualified"/>
+    <xsl:call-template name="add-class-link">
+      <xsl:with-param name="class" select="$class"/>
+    </xsl:call-template>
     <xsl:apply-templates select="generic"/>
     <xsl:text>&gt;&#8203;</xsl:text>
+  </xsl:template>
+
+
+    <!---
+-->
+  <xsl:template name="add-class-link">
+    <xsl:param name = "class" />
+    <xsl:choose>
+      <xsl:when test="//package/class[@qualified=$class]">
+        <xsl:call-template name="add-link" >
+          <xsl:with-param name="type" select="'topic'" />
+          <xsl:with-param name="href" select="concat('#', $class)"/>
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="//package/interface[@qualified=$class]">
+        <xsl:call-template name="add-link" >
+          <xsl:with-param name="type" select="'topic'" />
+          <xsl:with-param name="href" select="concat('#', $class)"/>
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="//package/enum[@qualified=$class]">
+        <xsl:call-template name="add-link" >
+          <xsl:with-param name="type" select="'topic'" />
+          <xsl:with-param name="href" select="concat('#', $class)"/>
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$class">
+         <xsl:value-of select="dita-ot:addZeroWidthSpaces($class)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>????</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:function name="dita-ot:addZeroWidthSpaces">

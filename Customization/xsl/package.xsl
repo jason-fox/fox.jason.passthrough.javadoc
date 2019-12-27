@@ -47,7 +47,9 @@
         <xsl:call-template name="add-description"/>
         <xsl:if test="class">
           <section class="- topic/section " outputclass="class_summary">
-            <title class="- topic/title " >Class Summary</title>
+            <title class="- topic/title " >
+              <xsl:text>Class Summary</xsl:text>
+            </title>
             <ul class=" topic/ul ">
               <xsl:for-each select="class">
                 <xsl:sort select="@name"/>
@@ -58,7 +60,9 @@
         </xsl:if>
         <xsl:if test="interface">
            <section class="- topic/section " outputclass="interfaces_summary">
-            <title class="- topic/title " >Interface Summary</title>
+            <title class="- topic/title " >
+              <xsl:text>Interface Summary</xsl:text>
+            </title>
             <ul class=" topic/ul ">
               <xsl:for-each select="interface">
                 <xsl:sort select="@name"/>
@@ -69,7 +73,9 @@
         </xsl:if>
         <xsl:if test="enum">
            <section class="- topic/section " outputclass="enums_summary">
-            <title class="- topic/title " >Enumeration Summary</title>
+            <title class="- topic/title " >
+              <xsl:text>Enumeration Summary</xsl:text>
+            </title>
             <ul class=" topic/ul ">
               <xsl:for-each select="enum">
                 <xsl:sort select="@name"/>

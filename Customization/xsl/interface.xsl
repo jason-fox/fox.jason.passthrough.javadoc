@@ -31,14 +31,21 @@
       <body class="- topic/body ">
         <codeblock class=" pr-d/codeblock ">
           <xsl:value-of select="concat(@scope, ' interface ')"/>
-          <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
+          <b class=" hi-d/b ">
+          	<xsl:variable name="class" select="@name"/>
+		        <xsl:call-template name="add-class-link">
+		          <xsl:with-param name="class" select="$class"/>
+		        </xsl:call-template>
+        	</b>
         </codeblock>
         <xsl:call-template name="add-description"/>
       
         <xsl:if test="method">
           <!-- Interface Method Summary -->
           <section class="- topic/section " outputclass="methods_summary">
-            <title class="- topic/title " >Method Summary</title>
+            <title class="- topic/title " >
+            	<xsl:text>Method Summary</xsl:text>
+            </title>
             <xsl:call-template name="add-method-summary"/>
           </section>
         </xsl:if>
@@ -49,7 +56,9 @@
             <xsl:attribute name="id">
               <xsl:value-of select="concat(@qualified, '_methods')"/>
             </xsl:attribute>
-            <title class="- topic/title " >Method Detail</title>
+            <title class="- topic/title " >
+            	<xsl:text>Method Detail</xsl:text>
+            </title>
             <xsl:apply-templates select="method">
               <xsl:sort select="@name" />
             </xsl:apply-templates>

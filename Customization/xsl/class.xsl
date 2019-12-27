@@ -35,7 +35,9 @@
         </xsl:variable>
         <xsl:if test="//package/class/class[@qualified=$qualified]">
           <p class="- topic/p ">
-            <b class=" hi-d/b ">Direct Known Subclasses:</b>
+            <b class=" hi-d/b ">
+              <xsl:text>Direct Known Subclasses:</xsl:text>
+            </b>
           </p>
           <ul class=" topic/ul ">
             <xsl:for-each select="//package/class/class[@qualified=$qualified]">
@@ -74,13 +76,17 @@
         <xsl:if test="constructor">
           <!-- Class Constructor Summary -->
           <section class="- topic/section " outputclass="contructors_summary">
-            <title class="- topic/title " >Constructor Summary</title>
+            <title class="- topic/title " >
+               <xsl:text>Constructor Summary</xsl:text>
+             </title>
             <xsl:call-template name="add-constructor-summary"/>
           </section>
         </xsl:if>
           <!-- Class Method Summary -->
            <section class="- topic/section " outputclass="methods_summary">
-            <title class="- topic/title " >Method Summary</title>
+            <title class="- topic/title " >
+               <xsl:text>Method Summary</xsl:text>
+             </title>
             <xsl:if test="method">
               <xsl:call-template name="add-method-summary"/>
             </xsl:if>
@@ -92,7 +98,9 @@
             <xsl:attribute name="id">
               <xsl:value-of select="concat(@qualified, '_constructors')"/>
             </xsl:attribute>
-            <title class="- topic/title " >Constructor Detail</title>
+            <title class="- topic/title " >
+              <xsl:text>Constructor Detail</xsl:text>
+            </title>
             <xsl:apply-templates select="constructor" >
               <xsl:sort select="@signature"/>
             </xsl:apply-templates>
@@ -105,7 +113,9 @@
             <xsl:attribute name="id">
               <xsl:value-of select="concat(@qualified, '_methods')"/>
             </xsl:attribute>
-            <title class="- topic/title " >Method Detail</title>
+            <title class="- topic/title " >
+              <xsl:text>Method Detail</xsl:text>
+            </title>
             <xsl:apply-templates select="method">
               <xsl:sort select="@name" />
             </xsl:apply-templates>
@@ -125,7 +135,7 @@
         <thead class=" topic/thead ">
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
-              Constructor and Description
+               <xsl:text>Constructor and Description</xsl:text>
             </entry>
           </row>
         </thead>
@@ -158,6 +168,7 @@
       </tgroup>
     </table>
   </xsl:template>
+
   <!--
       Constructor Details
   -->
