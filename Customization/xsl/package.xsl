@@ -43,7 +43,7 @@
           <xsl:value-of select="@name"/>
         </searchtitle>
       </titlealts>
-      <body class="- topic/body ">
+      <body class="- topic/body " outputclass="java">
         <xsl:call-template name="add-description"/>
         <xsl:if test="class[@exception='false']">
           <section class="- topic/section " outputclass="class_summary">

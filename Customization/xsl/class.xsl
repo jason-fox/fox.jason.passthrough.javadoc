@@ -28,7 +28,7 @@
           <xsl:value-of select="@name"/>
         </searchtitle>
       </titlealts>
-      <body class="- topic/body ">
+      <body class="- topic/body " outputclass="java">
 
         <xsl:variable name="class" select="@qualified"/>
         <xsl:variable name="extends" select="class/@qualified"/>
@@ -90,6 +90,7 @@
         </xsl:if>
 
         <codeblock class=" pr-d/codeblock ">
+          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
           <xsl:value-of select="concat(@scope, ' ', name(), ' ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
           <xsl:choose>
@@ -205,6 +206,7 @@
             <row class=" topic/row ">
                <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
+                  <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'1')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
                     <xsl:with-param name="href">
@@ -235,8 +237,9 @@
     <xsl:variable name="constructor" select="@name"/>
     <xsl:variable name="constructor_details">
       <codeph class=" pr-d/codeph ">
-         <xsl:value-of select="$constructor"/>
-         <xsl:call-template name="add-signature"/>
+        <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'2')"/>
+        <xsl:value-of select="$constructor"/>
+        <xsl:call-template name="add-signature"/>
       </codeph>
       <p class="- topic/p ">
         <xsl:value-of select="comment"/>
@@ -286,6 +289,7 @@
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
+                  <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'3')"/>
                   <xsl:call-template name="add-modifiers"/>
                   <xsl:call-template name="add-class-link">
                     <xsl:with-param name="class" select="type/@qualified"/>
@@ -295,6 +299,7 @@
               </entry>
                <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
                 <codeph class=" pr-d/codeph ">
+                  <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'4')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
                     <xsl:with-param name="href">
@@ -324,6 +329,7 @@
     <xsl:variable name="field" select="@name"/>
     <xsl:variable name="field_details">
       <codeph class=" pr-d/codeph ">
+        <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'5')"/>
         <xsl:value-of select="concat(@scope, ' ')"/>
         <xsl:if test="@static='true'">
           <xsl:text>static </xsl:text>

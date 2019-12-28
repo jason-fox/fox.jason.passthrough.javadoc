@@ -28,8 +28,9 @@
           <xsl:value-of select="@name"/>
         </searchtitle>
       </titlealts>
-      <body class="- topic/body ">
+      <body class="- topic/body " outputclass="java">
         <codeblock class=" pr-d/codeblock ">
+          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
           <xsl:value-of select="concat(@scope, ' interface ')"/>
           <b class=" hi-d/b ">
           	<xsl:variable name="class" select="@name"/>

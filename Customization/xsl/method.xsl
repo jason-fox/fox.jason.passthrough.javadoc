@@ -35,6 +35,7 @@
             <row class=" topic/row ">
               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
                 <codeph class=" pr-d/codeph ">
+                  <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'12')"/>
                   <xsl:call-template name="add-modifiers"/>
                   <xsl:call-template name="add-class-link">
                     <xsl:with-param name="class" select="child::return/@qualified"/>
@@ -44,6 +45,7 @@
               </entry>
                <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
                 <codeph class=" pr-d/codeph ">
+                  <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'13')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
                     <xsl:with-param name="href">
@@ -106,6 +108,7 @@
         <xsl:sort select="@name"/>
         <xsl:variable name="method" select="@name"/>
         <codeph class=" pr-d/codeph ">
+          <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'14')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'table'" />
             <xsl:with-param name="href">
@@ -155,6 +158,7 @@
     <xsl:variable name="method" select="@name"/>
     <xsl:variable name="method_details">
       <codeblock class=" pr-d/codeblock ">
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'8')"/>
         <xsl:value-of select="concat(@scope, ' ')"/>
         <xsl:call-template name="add-modifiers"/>
         <xsl:variable name="class" select="child::return/@qualified"/>
@@ -236,6 +240,7 @@
           <xsl:variable name="pcount" select="position()"/>
           <li class=" topic/li ">
             <codeph class=" pr-d/codeph ">
+              <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'15')"/>
               <xsl:value-of select="concat(@name, ' ')"/>
             </codeph>
             <xsl:if test="parent::method/tag[$pcount]/@text">
@@ -264,6 +269,7 @@
           </xsl:when>
           <xsl:otherwise>
             <codeph class=" pr-d/codeph ">
+              <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'16')"/>
               <xsl:value-of select="child::return/@qualified"/>
               <xsl:value-of select="child::return/@dimension"/>
             </codeph>
@@ -281,6 +287,7 @@
       
       <p class="- topic/p ">
         <codeph class=" pr-d/codeph ">
+          <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'17')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'table'" />
             <xsl:with-param name="href">
@@ -294,6 +301,7 @@
         </codeph>
         <xsl:text> in class </xsl:text>
          <codeph class=" pr-d/codeph ">
+          <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'18')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'topic'" />
             <xsl:with-param name="href" select="concat('#', $extends)" />

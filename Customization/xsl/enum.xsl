@@ -29,8 +29,9 @@
           <xsl:value-of select="@name"/>
         </searchtitle>
       </titlealts>
-      <body class="- topic/body ">
+      <body class="- topic/body " outputclass="java">
         <codeblock class=" pr-d/codeblock ">
+          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
           <xsl:value-of select="concat(@scope, ' enum ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
           <xsl:text> extends </xsl:text>
@@ -110,7 +111,8 @@
     </xsl:variable>
     
     <xsl:variable name="body">
-     <codeblock class=" pr-d/codeblock ">
+      <codeblock class=" pr-d/codeblock ">
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
         <xsl:text>public static final </xsl:text>
         <xsl:call-template name="add-class-link">
           <xsl:with-param name="class" select="../class/generic/@qualified"/>
@@ -156,11 +158,13 @@
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
               <codeph class=" pr-d/codeph ">
+                <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'6')"/>
                 <xsl:value-of select="concat('static ', @name)"/>
               </codeph>
             </entry>
              <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
               <codeph class=" pr-d/codeph ">
+                <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'7')"/>
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'table'" />
                   <xsl:with-param name="href" select="concat('#', @qualified, '/methods_valueOf')" />
@@ -174,11 +178,13 @@
           <row class=" topic/row ">
             <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
               <codeph class=" pr-d/codeph ">
+                <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'8')"/>
                 <xsl:value-of select="concat('static ', @name, '[]')"/>
               </codeph>
             </entry>
              <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
               <codeph class=" pr-d/codeph ">
+                <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'9')"/>
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'table'" />
                   <xsl:with-param name="href" select="concat('#', @qualified, '/methods_values')" />
@@ -205,11 +211,12 @@
 
     <xsl:variable name="details_valueOf">
       <codeblock class=" pr-d/codeblock ">
-      <xsl:text>public static </xsl:text>
-      <xsl:call-template name="add-class-link">
-        <xsl:with-param name="class" select="$class"/>
-      </xsl:call-template>
-      <xsl:text> valueOf(java.lang.String name)</xsl:text>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:text>public static </xsl:text>
+        <xsl:call-template name="add-class-link">
+          <xsl:with-param name="class" select="$class"/>
+        </xsl:call-template>
+        <xsl:text> valueOf(java.lang.String name)</xsl:text>
       </codeblock>
       <p class="- topic/p ">
        <xsl:text>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</xsl:text>
@@ -245,17 +252,19 @@
     -->
     <xsl:variable name="details_values">
       <codeblock class=" pr-d/codeblock ">
-      <xsl:text>public static </xsl:text>
-      <xsl:call-template name="add-class-link">
-        <xsl:with-param name="class" select="$class"/>
-      </xsl:call-template>
-      <xsl:text>[] values()</xsl:text>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:text>public static </xsl:text>
+        <xsl:call-template name="add-class-link">
+          <xsl:with-param name="class" select="$class"/>
+        </xsl:call-template>
+        <xsl:text>[] values()</xsl:text>
       </codeblock>
       <p class="- topic/p ">
        <xsl:text>Returns an array containing the constants of this enum type, in the order they are declared. This method may be used to iterate over the constants as follows:</xsl:text>
       </p>
 
       <codeblock class=" pr-d/codeblock ">
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
         <xsl:value-of select="concat('for (', @name, ' c : ', @name, '.values())')"/>
         <xsl:text>&#10;    System.out.println(c);</xsl:text>
       </codeblock>
