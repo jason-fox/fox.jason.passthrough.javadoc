@@ -31,7 +31,7 @@
       </titlealts>
       <body class="- topic/body " outputclass="java">
         <codeblock class=" pr-d/codeblock ">
-          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'2')"/>
           <xsl:value-of select="concat(@scope, ' enum ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
           <xsl:text> extends </xsl:text>
@@ -112,7 +112,7 @@
     
     <xsl:variable name="body">
       <codeblock class=" pr-d/codeblock ">
-        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'3')"/>
         <xsl:text>public static final </xsl:text>
         <xsl:call-template name="add-class-link">
           <xsl:with-param name="class" select="../class/generic/@qualified"/>
@@ -211,7 +211,7 @@
 
     <xsl:variable name="details_valueOf">
       <codeblock class=" pr-d/codeblock ">
-        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'4')"/>
         <xsl:text>public static </xsl:text>
         <xsl:call-template name="add-class-link">
           <xsl:with-param name="class" select="$class"/>
@@ -252,7 +252,7 @@
     -->
     <xsl:variable name="details_values">
       <codeblock class=" pr-d/codeblock ">
-        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'5')"/>
         <xsl:text>public static </xsl:text>
         <xsl:call-template name="add-class-link">
           <xsl:with-param name="class" select="$class"/>
@@ -264,7 +264,7 @@
       </p>
 
       <codeblock class=" pr-d/codeblock ">
-        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'6')"/>
         <xsl:value-of select="concat('for (', @name, ' c : ', @name, '.values())')"/>
         <xsl:text>&#10;    System.out.println(c);</xsl:text>
       </codeblock>

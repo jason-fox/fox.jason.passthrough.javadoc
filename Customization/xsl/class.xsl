@@ -90,7 +90,7 @@
         </xsl:if>
 
         <codeblock class=" pr-d/codeblock ">
-          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.))"/>
+          <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'1')"/>
           <xsl:value-of select="concat(@scope, ' ', name(), ' ')"/>
           <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
           <xsl:choose>
