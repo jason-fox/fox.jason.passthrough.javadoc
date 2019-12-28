@@ -4,6 +4,7 @@
 [![DITA-OT 3.4](https://img.shields.io/badge/DITA--OT-3.4-blue.svg)](http://www.dita-ot.org/3.4)
 [![Build Status](https://travis-ci.org/jason-fox/fox.jason.passthrough.javadoc.svg?branch=master)](https://travis-ci.org/jason-fox/fox.jason.passthrough.javadoc)
 [![Coverage Status](https://coveralls.io/repos/github/jason-fox/fox.jason.passthrough.javadoc/badge.svg?branch=master)](https://coveralls.io/github/jason-fox/fox.jason.passthrough.javadoc?branch=master)
+[![Documentation Status](https://readthedocs.org/projects/javadocdita-ot/badge/?version=latest)](https://javadocdita-ot.readthedocs.io/en/latest/?badge=latest)
 
 This is a [DITA-OT Plug-in](https://www.dita-ot.org/plugins) used to auto-create valid DITA-based JavaDoc documentation. The initial source of the documentation can be
 generated directly using the [JavaDoc XML Doclet](https://github.com/MarkusBernhardt/xml-doclet). The XML file can be added to the source and processed as if it had been written
