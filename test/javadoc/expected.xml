@@ -596,7 +596,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>DefaultEffector()</codeph>
+                    <codeblock>DefaultEffector()</codeblock>
                     <p>DefaultEffector is the constructor for DefaultEffector.</p>
                   </entry>
                 </row>
@@ -1032,7 +1032,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinAdapterException(java.&#8203;lang.&#8203;String message)</codeph>
+                    <codeblock>CasbinAdapterException(java.&#8203;lang.&#8203;String message)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1058,7 +1058,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinAdapterException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
+                    <codeblock>CasbinAdapterException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1167,7 +1167,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinConfigException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
+                    <codeblock>CasbinConfigException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1282,7 +1282,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinMatcherException(java.&#8203;lang.&#8203;String message)</codeph>
+                    <codeblock>CasbinMatcherException(java.&#8203;lang.&#8203;String message)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1308,7 +1308,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinMatcherException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
+                    <codeblock>CasbinMatcherException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1417,7 +1417,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CasbinPolicyFileNotFoundException(java.&#8203;lang.&#8203;String message)</codeph>
+                    <codeblock>CasbinPolicyFileNotFoundException(java.&#8203;lang.&#8203;String message)</codeblock>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1742,7 +1742,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>CoreEnforcer()</codeph>
+                    <codeblock>CoreEnforcer()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -2822,7 +2822,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer()</codeph>
+                    <codeblock>Enforcer()</codeblock>
                     <p>Enforcer is the default constructor.</p>
                   </entry>
                 </row>
@@ -2841,7 +2841,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(java.&#8203;lang.&#8203;String modelPath)</codeph>
+                    <codeblock>Enforcer(java.&#8203;lang.&#8203;String modelPath)</codeblock>
                     <p>Enforcer initializes an enforcer with a model file.</p>
                     <p>
                       <b>Parameters:</b>
@@ -2868,7 +2868,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile)</codeph>
+                    <codeblock>Enforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile)</codeblock>
                     <p>Enforcer initializes an enforcer with a model file and a policy file.</p>
                     <p>
                       <b>Parameters:</b>
@@ -2898,7 +2898,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile, boolean enableLog)</codeph>
+                    <codeblock>Enforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile, boolean enableLog)</codeblock>
                     <p>Enforcer initializes an enforcer with a model file, a policy file and an enable log flag.</p>
                     <p>
                       <b>Parameters:</b>
@@ -2931,8 +2931,8 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(java.&#8203;lang.&#8203;String modelPath,
-                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeph>
+                    <codeblock>Enforcer(java.&#8203;lang.&#8203;String modelPath,
+                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeblock>
                     <p>Enforcer initializes an enforcer with a database adapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -2962,8 +2962,8 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(
-                      <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m)</codeph>
+                    <codeblock>Enforcer(
+                      <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m)</codeblock>
                     <p>Enforcer initializes an enforcer with a model.</p>
                     <p>
                       <b>Parameters:</b>
@@ -2990,9 +2990,9 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Enforcer(
+                    <codeblock>Enforcer(
                       <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m,
-                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeph>
+                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeblock>
                     <p>Enforcer initializes an enforcer with a model and a database adapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -4276,7 +4276,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>ManagementEnforcer()</codeph>
+                    <codeblock>ManagementEnforcer()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -6245,7 +6245,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer()</codeph>
+                    <codeblock>SyncedEnforcer()</codeblock>
                     <p>;
  SyncedEnforcer is the default constructor.</p>
                   </entry>
@@ -6265,7 +6265,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath)</codeph>
+                    <codeblock>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a model file.</p>
                     <p>
                       <b>Parameters:</b>
@@ -6292,7 +6292,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile)</codeph>
+                    <codeblock>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a model file and a policy file.</p>
                     <p>
                       <b>Parameters:</b>
@@ -6322,7 +6322,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile, boolean enableLog)</codeph>
+                    <codeblock>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath, java.&#8203;lang.&#8203;String policyFile, boolean enableLog)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a model file, a policy file and an enable log flag.</p>
                     <p>
                       <b>Parameters:</b>
@@ -6355,8 +6355,8 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath,
-                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeph>
+                    <codeblock>SyncedEnforcer(java.&#8203;lang.&#8203;String modelPath,
+                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a database adapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -6386,8 +6386,8 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(
-                      <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m)</codeph>
+                    <codeblock>SyncedEnforcer(
+                      <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a model.</p>
                     <p>
                       <b>Parameters:</b>
@@ -6414,9 +6414,9 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>SyncedEnforcer(
+                    <codeblock>SyncedEnforcer(
                       <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>m,
-                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeph>
+                      <xref format="dita" href="#org.casbin.jcasbin.persist.Adapter" scope="local" type="topic">Adapter</xref>adapter)</codeblock>
                     <p>SyncedEnforcer initializes an enforcer with a model and a database adapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -7761,7 +7761,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Assertion()</codeph>
+                    <codeblock>Assertion()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -7946,7 +7946,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>FunctionMap()</codeph>
+                    <codeblock>FunctionMap()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -8184,7 +8184,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Model()</codeph>
+                    <codeblock>Model()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -8550,7 +8550,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Policy()</codeph>
+                    <codeblock>Policy()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -9010,7 +9010,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Helper()</codeph>
+                    <codeblock>Helper()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -9597,7 +9597,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>FileAdapter(InputStream inputStream)</codeph>
+                    <codeblock>FileAdapter(InputStream inputStream)</codeblock>
                     <p>FileAdapter is the constructor for FileAdapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -9624,7 +9624,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>FileAdapter(java.&#8203;lang.&#8203;String filePath)</codeph>
+                    <codeblock>FileAdapter(java.&#8203;lang.&#8203;String filePath)</codeblock>
                     <p>FileAdapter is the constructor for FileAdapter.</p>
                     <p>
                       <b>Parameters:</b>
@@ -10038,7 +10038,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>DefaultRoleManager(int maxHierarchyLevel)</codeph>
+                    <codeblock>DefaultRoleManager(int maxHierarchyLevel)</codeblock>
                     <p>DefaultRoleManager is the constructor for creating an instance of the
  default RoleManager implementation.</p>
                     <p>
@@ -10504,7 +10504,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>GroupRoleManager(int maxHierarchyLevel)</codeph>
+                    <codeblock>GroupRoleManager(int maxHierarchyLevel)</codeblock>
                     <p>GroupRoleManager is the constructor for creating an instance of the
  GroupRoleManager implementation.</p>
                     <p>
@@ -11011,7 +11011,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>BuiltInFunctions()</codeph>
+                    <codeblock>BuiltInFunctions()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -11443,7 +11443,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>Util()</codeph>
+                    <codeblock>Util()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -11933,7 +11933,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>IPMatchFunc()</codeph>
+                    <codeblock>IPMatchFunc()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -12105,7 +12105,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>KeyMatch2Func()</codeph>
+                    <codeblock>KeyMatch2Func()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -12277,7 +12277,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>KeyMatch3Func()</codeph>
+                    <codeblock>KeyMatch3Func()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -12449,7 +12449,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>KeyMatchFunc()</codeph>
+                    <codeblock>KeyMatchFunc()</codeblock>
                   </entry>
                 </row>
               </tbody>
@@ -12621,7 +12621,7 @@
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>RegexMatchFunc()</codeph>
+                    <codeblock>RegexMatchFunc()</codeblock>
                   </entry>
                 </row>
               </tbody>

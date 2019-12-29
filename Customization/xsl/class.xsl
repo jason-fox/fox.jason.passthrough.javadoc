@@ -236,11 +236,11 @@
   <xsl:template match="constructor">
     <xsl:variable name="constructor" select="@name"/>
     <xsl:variable name="constructor_details">
-      <codeph class=" pr-d/codeph ">
-        <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'2')"/>
+      <codeblock class=" pr-d/codeblock ">
+        <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'9')"/>
         <xsl:value-of select="$constructor"/>
         <xsl:call-template name="add-signature"/>
-      </codeph>
+      </codeblock>
       <xsl:call-template  name="parse-comment"/>
       <xsl:call-template name="parameter-description"/>
     </xsl:variable>

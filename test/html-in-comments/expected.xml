@@ -594,7 +594,7 @@ This is another line of text.</lines>
               <tbody>
                 <row>
                   <entry align="left" colname="c1">
-                    <codeph>DefaultEffector()</codeph>
+                    <codeblock>DefaultEffector()</codeblock>
                     <p>DefaultEffector is the constructor for DefaultEffector.</p>
                   </entry>
                 </row>
