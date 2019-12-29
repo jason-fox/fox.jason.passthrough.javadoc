@@ -3,8 +3,6 @@
 This is a [DITA-OT Plug-in](https://www.dita-ot.org/plugins) used to auto-create valid DITA-based JavaDoc documentation. The initial source of the documentation can be
 generated directly using the [JavaDoc XML Doclet](https://github.com/MarkusBernhardt/xml-doclet). The XML file can be added to the source and processed as if it had been written in DITA.
 
-## Background
-
 [<img src="https://jason-fox.github.io/fox.jason.passthrough.javadoc/javalogo.png" align="right" width="70" height="55">](https://docs.oracle.com/javase/1.5.0/docs/guide/javadoc/index.html)
 
 [JavaDoc](https://docs.oracle.com/javase/1.5.0/docs/guide/javadoc/index.html) is a tool that parses the declarations and documentation comments in a set of source files and produces a set of HTML pages describing the classes, interfaces, constructors, methods, and fields.
