@@ -6,7 +6,7 @@
 <project basedir="." default="unit-test">
 	<import file="../bootstrap.xml"/>
 	<description>
-		Expect that a JavaDoc file is generated to DITA
+		Expect that HTML comments in a JavaDoc file is generated to DITA
 	</description>
 	<target name="unit-test">
 		<property name="file" value="${basedir}/out/javadoc.xml.dita"/>
