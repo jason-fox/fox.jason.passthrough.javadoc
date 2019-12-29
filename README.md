@@ -58,8 +58,9 @@ public interface Effector {
 
 ## Install
 
-The DITA-OT JavaDoc plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). It is recommended
-that you upgrade to the latest version.
+The DITA-OT JavaDoc plug-in has been tested against [DITA-OT 3.x](http://www.dita-ot.org/download). The plugin requires the XSLT 3.0 support
+found in the [Saxon9.8HE](https://www.saxonica.com/html/download/java.html) library, so the mimimum DITA-OT version is therefore 3.3.
+It is recommended that you upgrade to the latest version.
 
 ### Installing DITA-OT
 

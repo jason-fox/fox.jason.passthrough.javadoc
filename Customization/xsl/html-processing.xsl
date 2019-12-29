@@ -9,28 +9,57 @@
                 xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
                 version="2.0">
 
+  <!--
+    Iterate over all nodes - this should remove unprocessed elements
+    such as <br>, <hr> & etc.
+  -->
   <xsl:template match="*" mode="html">
     <xsl:apply-templates mode="html"/>
   </xsl:template>
 
+  <!--
+    HTML Header processing <h1> to <h6>
+    these are not real headers - just use bold text.
+  -->
+  <xsl:template match="h1|h2|h3|h4|h5|h6" mode="html">
+    <p class="- topic/p ">
+      <b class=" hi-d/b ">
+        <xsl:apply-templates mode="html"/>
+      </b>
+    </p>
+  </xsl:template>
+
+  <!--
+    Paragraph processing
+  -->
   <xsl:template match="p" mode="html">
     <p class="- topic/p ">
       <xsl:apply-templates mode="html"/>
     </p>
   </xsl:template>
 
+  <!--
+    Unordered list processing
+  -->
   <xsl:template match="ul" mode="html">
     <ul class=" topic/ul ">
       <xsl:apply-templates mode="html"/>
     </ul>
   </xsl:template>
 
+  <!--
+    Ordered list processing
+  -->
   <xsl:template match="ol" mode="html">
     <ol class=" topic/ol ">
       <xsl:apply-templates mode="html"/>
     </ol>
   </xsl:template>
 
+  <!--
+    List Item processing 
+    Assume unordered if no parent found
+  -->
   <xsl:template match="li" mode="html">
     <xsl:choose>
       <xsl:when test="../name()='ul'">
@@ -53,24 +82,36 @@
     </xsl:choose>
   </xsl:template>
 
+  <!--
+    Code processing
+  -->
   <xsl:template match="code" mode="html">
     <codeph class=" pr-d/codeph ">
       <xsl:apply-templates mode="html"/>
     </codeph>
   </xsl:template>
 
+  <!--
+    Bold/Strong processing
+  -->
   <xsl:template match="b|strong" mode="html">
     <b class=" hi-d/b ">
       <xsl:apply-templates mode="html"/>
     </b>
   </xsl:template>
 
+  <!--
+    Italic/Emphasis processing
+  -->
   <xsl:template match="em|emphasis|i" mode="html">
     <i class=" hi-d/i ">
       <xsl:apply-templates mode="html"/>
     </i>
   </xsl:template>
 
+  <!--
+    Anchor processing
+  -->
   <xsl:template match="a" mode="html">
     <xref class=" topic/xref " format="dita" scope="external">
       <xsl:attribute name="href">
@@ -80,6 +121,16 @@
     </xref>
   </xsl:template>
 
+  <!--
+    HTML text processing.
+
+    If no parent found then:
+    
+      For a single block of text, place the text within a <p> tag
+
+      For text split over multiple paragraphs, place the text within 
+      a <lines> tag.
+  -->
   <xsl:template match="text()" mode="html">
     <xsl:variable name="text" select="."/>
     <xsl:choose>
