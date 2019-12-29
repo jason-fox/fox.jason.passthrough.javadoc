@@ -241,9 +241,7 @@
         <xsl:value-of select="$constructor"/>
         <xsl:call-template name="add-signature"/>
       </codeph>
-      <p class="- topic/p ">
-        <xsl:value-of select="comment"/>
-      </p>
+      <xsl:call-template  name="parse-comment"/>
       <xsl:call-template name="parameter-description"/>
     </xsl:variable>
 
@@ -344,9 +342,7 @@
         <xsl:value-of select="type/@dimension"/>
         <xsl:value-of select="concat(' ',$field)"/>
       </codeph>
-      <p class="- topic/p ">
-        <xsl:value-of select="comment"/>
-      </p>
+      <xsl:call-template  name="parse-comment"/>
     </xsl:variable>
 
     <table class=" topic/table " outputclass="field_details">

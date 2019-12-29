@@ -7,16 +7,17 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
                 xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
-                version="2.0">
+                version="3.0">
   
   <xsl:param name="output.dir.uri"/>
 
   <xsl:include href="../Customization/xsl/class.xsl"/>
   <xsl:include href="../Customization/xsl/enum.xsl"/>
+  <xsl:include href="../Customization/xsl/html-processing.xsl"/>
   <xsl:include href="../Customization/xsl/interface.xsl"/>
+  <xsl:include href="../Customization/xsl/java-lang.xsl"/>
   <xsl:include href="../Customization/xsl/method.xsl"/>
   <xsl:include href="../Customization/xsl/package.xsl"/>
-  <xsl:include href="../Customization/xsl/java-lang.xsl"/>
 
   <!--
      Overall API Reference listing.
@@ -41,14 +42,35 @@
     </topic>
   </xsl:template>
   <!--
-    Formatted description
+    Add a description if one is present.
   -->
   <xsl:template name="add-description">
     <xsl:if test="comment">
-      <lines class=" topic/lines "><xsl:value-of select="comment"/></lines>
+      <xsl:call-template name="parse-comment"/>
     </xsl:if>
   </xsl:template>
+  <!--
+    Formatted description
+  -->
+  <xsl:template name="parse-comment">
+    <xsl:variable name="html-fragment">
+      <xsl:try>
+        <xsl:copy>
+          <xsl:copy-of select="parse-xml-fragment(concat('&lt;root&gt;',comment,'&lt;/root&gt;'))"/>
+        </xsl:copy>
+        <xsl:catch>
+          <xsl:copy>
+            <xsl:copy-of select="parse-xml-fragment(concat('&lt;root&gt;',replace(comment,'&lt;p&gt;','&#10;&#10;'),'&lt;/root&gt;'))"/>
+          </xsl:copy>
+        </xsl:catch>
+      </xsl:try>
+    </xsl:variable>
+    <xsl:apply-templates select="$html-fragment" mode="html"/>
+  </xsl:template>
 
+  <!--
+    Add an internal cross reference
+  -->
   <xsl:template name="add-link">
     <xsl:param name = "type" />
     <xsl:param name = "href" />
@@ -68,6 +90,10 @@
     </xref>
   </xsl:template>
 
+  <!--
+    Add a full width table consisting of a header 
+    and a single row.
+  -->
   <xsl:template name="mini-table">
     <xsl:param name = "header" />
     <xsl:param name = "body" />

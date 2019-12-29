@@ -196,7 +196,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String get(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -229,7 +228,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public boolean getBool(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -262,7 +260,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public float getFloat(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -295,7 +292,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public int getInt(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -328,7 +324,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getString(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -361,7 +356,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getStrings(java.&#8203;lang.&#8203;String key)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -456,7 +450,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public void set(java.&#8203;lang.&#8203;String key, java.&#8203;lang.&#8203;String value)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -525,7 +518,7 @@
         </ul>
         <codeblock>public class
           <b>DefaultEffector</b>extends java.lang.Object</codeblock>
-        <lines>DefaultEffector is default effector for Casbin.</lines>
+        <p>DefaultEffector is default effector for Casbin.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -678,7 +671,7 @@
         <codeblock>public interface
           <b>Effector</b>
         </codeblock>
-        <lines>Effector is the interface for Casbin effectors.</lines>
+        <p>Effector is the interface for Casbin effectors.</p>
         <section outputclass="methods_summary">
           <title>Method Summary</title>
           <table outputclass="method_summary">
@@ -817,7 +810,6 @@
                   <entry align="left" colname="c1">
                     <codeblock>public static final
                       <xref format="dita" href="#org.casbin.jcasbin.effect.Effect" scope="local" type="topic">Effect</xref>Allow</codeblock>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -837,7 +829,6 @@
                   <entry align="left" colname="c1">
                     <codeblock>public static final
                       <xref format="dita" href="#org.casbin.jcasbin.effect.Effect" scope="local" type="topic">Effect</xref>Deny</codeblock>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -857,7 +848,6 @@
                   <entry align="left" colname="c1">
                     <codeblock>public static final
                       <xref format="dita" href="#org.casbin.jcasbin.effect.Effect" scope="local" type="topic">Effect</xref>Indeterminate</codeblock>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -1043,7 +1033,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinAdapterException(java.&#8203;lang.&#8203;String message)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1070,7 +1059,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinAdapterException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1180,7 +1168,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinConfigException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1296,7 +1283,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinMatcherException(java.&#8203;lang.&#8203;String message)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1323,7 +1309,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinMatcherException(java.&#8203;lang.&#8203;String message, java.&#8203;lang.&#8203;Throwable cause)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1433,7 +1418,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CasbinPolicyFileNotFoundException(java.&#8203;lang.&#8203;String message)</codeph>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -1482,7 +1466,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>CoreEnforcer</b>extends java.lang.Object</codeblock>
-        <lines>CoreEnforcer defines the core functionality of an enforcer.</lines>
+        <p>CoreEnforcer defines the core functionality of an enforcer.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -1759,7 +1743,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>CoreEnforcer()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -2340,7 +2323,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public boolean validateEnforce(java.&#8203;lang.&#8203;Object[] rvals)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -2383,7 +2365,7 @@
           <b>Enforcer</b>extends
           <xref format="dita" href="#org.casbin.jcasbin.main.ManagementEnforcer" scope="local" type="topic">ManagementEnforcer</xref>
         </codeblock>
-        <lines>Enforcer = ManagementEnforcer + RBAC API.</lines>
+        <p>Enforcer = ManagementEnforcer + RBAC API.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -3493,15 +3475,17 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public List&#8203;&lt;List&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&gt;&#8203; getImplicitPermissionsForUser(java.&#8203;lang.&#8203;String user)</codeblock>
-                    <p>getImplicitPermissionsForUser gets implicit permissions for a user or role.
+                    <lines>getImplicitPermissionsForUser gets implicit permissions for a user or role.
  Compared to getPermissionsForUser(), this function retrieves permissions for inherited roles.
  For example:
  p, admin, data1, read
  p, alice, data2, read
  g, alice, admin
- &lt;p&gt;
+ 
+
+
  getPermissionsForUser("alice") can only get: [["alice", "data2", "read"]].
- But getImplicitPermissionsForUser("alice") will get: [["admin", "data1", "read"], ["alice", "data2", "read"]].</p>
+ But getImplicitPermissionsForUser("alice") will get: [["admin", "data1", "read"], ["alice", "data2", "read"]].</lines>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -3563,14 +3547,16 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public List&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203; getImplicitRolesForUser(java.&#8203;lang.&#8203;String name, java.&#8203;lang.&#8203;String[] domain)</codeblock>
-                    <p>getImplicitRolesForUser gets implicit roles that a user has.
+                    <lines>getImplicitRolesForUser gets implicit roles that a user has.
  Compared to getRolesForUser(), this function retrieves indirect roles besides direct roles.
  For example:
  g, alice, role:admin
  g, role:admin, role:user
- &lt;p&gt;
+ 
+
+
  getRolesForUser("alice") can only get: ["role:admin"].
- But getImplicitRolesForUser("alice") will get: ["role:admin", "role:user"].</p>
+ But getImplicitRolesForUser("alice") will get: ["role:admin", "role:user"].</lines>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -3860,7 +3846,7 @@
         </ul>
         <codeblock>public class
           <b>ManagementEnforcer</b>extends org.casbin.jcasbin.main.InternalEnforcer</codeblock>
-        <lines>ManagementEnforcer = InternalEnforcer + Management API.</lines>
+        <p>ManagementEnforcer = InternalEnforcer + Management API.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -4291,7 +4277,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>ManagementEnforcer()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -5716,7 +5701,7 @@
           <b>SyncedEnforcer</b>extends
           <xref format="dita" href="#org.casbin.jcasbin.main.Enforcer" scope="local" type="topic">Enforcer</xref>
         </codeblock>
-        <lines>SyncedEnforcer = ManagementEnforcer + RBAC API.</lines>
+        <p>SyncedEnforcer = ManagementEnforcer + RBAC API.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -7068,15 +7053,17 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public List&#8203;&lt;List&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&gt;&#8203; getImplicitPermissionsForUser(java.&#8203;lang.&#8203;String user)</codeblock>
-                    <p>getImplicitPermissionsForUser gets implicit permissions for a user or role.
+                    <lines>getImplicitPermissionsForUser gets implicit permissions for a user or role.
  Compared to getPermissionsForUser(), this function retrieves permissions for inherited roles.
  For example:
  p, admin, data1, read
  p, alice, data2, read
  g, alice, admin
- &lt;p&gt;
+ 
+
+
  getPermissionsForUser("alice") can only get: [["alice", "data2", "read"]].
- But getImplicitPermissionsForUser("alice") will get: [["admin", "data1", "read"], ["alice", "data2", "read"]].</p>
+ But getImplicitPermissionsForUser("alice") will get: [["admin", "data1", "read"], ["alice", "data2", "read"]].</lines>
                     <p>
                       <b>Overrides:</b>
                     </p>
@@ -7117,14 +7104,16 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public List&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203; getImplicitRolesForUser(java.&#8203;lang.&#8203;String name, java.&#8203;lang.&#8203;String[] domain)</codeblock>
-                    <p>getImplicitRolesForUser gets implicit roles that a user has.
+                    <lines>getImplicitRolesForUser gets implicit roles that a user has.
  Compared to getRolesForUser(), this function retrieves indirect roles besides direct roles.
  For example:
  g, alice, role:admin
  g, role:admin, role:user
- &lt;p&gt;
+ 
+
+
  getRolesForUser("alice") can only get: ["role:admin"].
- But getImplicitRolesForUser("alice") will get: ["role:admin", "role:user"].</p>
+ But getImplicitRolesForUser("alice") will get: ["role:admin", "role:user"].</lines>
                     <p>
                       <b>Overrides:</b>
                     </p>
@@ -7528,8 +7517,8 @@
       <body outputclass="java">
         <codeblock>public class
           <b>Assertion</b>extends java.lang.Object</codeblock>
-        <lines>Assertion represents an expression in a section of the model.
- For example: r = sub, obj, act</lines>
+        <p>Assertion represents an expression in a section of the model.
+ For example: r = sub, obj, act</p>
         <section outputclass="fields_summary">
           <title>Field Summary</title>
           <table outputclass="field_summary">
@@ -7679,7 +7668,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>public java.&#8203;lang.&#8203;String key</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7698,7 +7686,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>public List&#8203;&lt;List&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&gt;&#8203; policy</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7718,7 +7705,6 @@
                   <entry align="left" colname="c1">
                     <codeph>public
                       <xref format="dita" href="#org.casbin.jcasbin.rbac.RoleManager" scope="local" type="topic">RoleManager</xref>rm</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7737,7 +7723,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>public java.&#8203;lang.&#8203;String[] tokens</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7756,7 +7741,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>public java.&#8203;lang.&#8203;String value</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7778,7 +7762,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>Assertion()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -7801,7 +7784,6 @@
                   <entry align="left" colname="c1">
                     <codeblock>protected void buildRoleLinks(
                       <xref format="dita" href="#org.casbin.jcasbin.rbac.RoleManager" scope="local" type="topic">RoleManager</xref>rm)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -7828,7 +7810,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>FunctionMap</b>extends java.lang.Object</codeblock>
-        <lines>FunctionMap represents the collection of Function.</lines>
+        <p>FunctionMap represents the collection of Function.</p>
         <section outputclass="fields_summary">
           <title>Field Summary</title>
           <table outputclass="field_summary">
@@ -7965,7 +7947,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>FunctionMap()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -8041,7 +8022,7 @@
           <b>Model</b>extends
           <xref format="dita" href="#org.casbin.jcasbin.model.Policy" scope="local" type="topic">Policy</xref>
         </codeblock>
-        <lines>Model represents the whole access control model.</lines>
+        <p>Model represents the whole access control model.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -8204,7 +8185,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>Model()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -8550,7 +8530,6 @@
                   <entry align="left" colname="c1">
                     <codeph>public Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;
                       <xref format="dita" href="#org.casbin.jcasbin.model.Assertion" scope="local" type="topic">Assertion</xref>&gt;&#8203;&gt;&#8203; model</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -8572,7 +8551,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>Policy()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -9033,7 +9011,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>Helper()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -9056,7 +9033,6 @@
                   <entry align="left" colname="c1">
                     <codeblock>public static void loadPolicyLine(java.&#8203;lang.&#8203;String line,
                       <xref format="dita" href="#org.casbin.jcasbin.model.Model" scope="local" type="topic">Model</xref>model)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -9087,7 +9063,7 @@
         <codeblock>public interface
           <b>Adapter</b>
         </codeblock>
-        <lines>Adapter is the interface for Casbin adapters.</lines>
+        <p>Adapter is the interface for Casbin adapters.</p>
         <section outputclass="methods_summary">
           <title>Method Summary</title>
           <table outputclass="method_summary">
@@ -9352,7 +9328,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public void accept(T t, U u)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -9383,7 +9358,7 @@
         <codeblock>public interface
           <b>Watcher</b>
         </codeblock>
-        <lines>Watcher is the interface for Casbin watchers.</lines>
+        <p>Watcher is the interface for Casbin watchers.</p>
         <section outputclass="methods_summary">
           <title>Method Summary</title>
           <table outputclass="method_summary">
@@ -9505,8 +9480,8 @@
         </ul>
         <codeblock>public class
           <b>FileAdapter</b>extends java.lang.Object</codeblock>
-        <lines>FileAdapter is the file adapter for Casbin.
- It can load policy from file or save policy to file.</lines>
+        <p>FileAdapter is the file adapter for Casbin.
+ It can load policy from file or save policy to file.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -11037,7 +11012,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>BuiltInFunctions()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -11449,7 +11423,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>public static boolean enableLog</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -11471,7 +11444,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>Util()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -11873,7 +11845,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>IPMatchFunc</b>extends com.googlecode.aviator.runtime.function.AbstractFunction</codeblock>
-        <lines>IPMatchFunc is the wrapper for ipMatch.</lines>
+        <p>IPMatchFunc is the wrapper for ipMatch.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -11962,7 +11934,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>IPMatchFunc()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -11984,7 +11955,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public AviatorObject call(Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;java.&#8203;lang.&#8203;Object&gt;&#8203; env, AviatorObject arg1, AviatorObject arg2)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -12023,7 +11993,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getName()</codeblock>
-                    <p></p>
                     <p>
                       <b>Returns:</b>
                     </p>
@@ -12048,7 +12017,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>KeyMatch2Func</b>extends com.googlecode.aviator.runtime.function.AbstractFunction</codeblock>
-        <lines>KeyMatch2Func is the wrapper for keyMatch2.</lines>
+        <p>KeyMatch2Func is the wrapper for keyMatch2.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -12137,7 +12106,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>KeyMatch2Func()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -12159,7 +12127,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public AviatorObject call(Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;java.&#8203;lang.&#8203;Object&gt;&#8203; env, AviatorObject arg1, AviatorObject arg2)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -12198,7 +12165,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getName()</codeblock>
-                    <p></p>
                     <p>
                       <b>Returns:</b>
                     </p>
@@ -12223,7 +12189,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>KeyMatch3Func</b>extends com.googlecode.aviator.runtime.function.AbstractFunction</codeblock>
-        <lines>KeyMatch3Func is the wrapper for keyMatch2.</lines>
+        <p>KeyMatch3Func is the wrapper for keyMatch2.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -12312,7 +12278,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>KeyMatch3Func()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -12334,7 +12299,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public AviatorObject call(Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;java.&#8203;lang.&#8203;Object&gt;&#8203; env, AviatorObject arg1, AviatorObject arg2)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -12373,7 +12337,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getName()</codeblock>
-                    <p></p>
                     <p>
                       <b>Returns:</b>
                     </p>
@@ -12398,7 +12361,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>KeyMatchFunc</b>extends com.googlecode.aviator.runtime.function.AbstractFunction</codeblock>
-        <lines>KeyMatchFunc is the wrapper for keyMatch.</lines>
+        <p>KeyMatchFunc is the wrapper for keyMatch.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -12487,7 +12450,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>KeyMatchFunc()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -12509,7 +12471,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public AviatorObject call(Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;java.&#8203;lang.&#8203;Object&gt;&#8203; env, AviatorObject arg1, AviatorObject arg2)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -12548,7 +12509,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getName()</codeblock>
-                    <p></p>
                     <p>
                       <b>Returns:</b>
                     </p>
@@ -12573,7 +12533,7 @@
       <body outputclass="java">
         <codeblock>public class
           <b>RegexMatchFunc</b>extends com.googlecode.aviator.runtime.function.AbstractFunction</codeblock>
-        <lines>RegexMatchFunc is the wrapper for regexMatch.</lines>
+        <p>RegexMatchFunc is the wrapper for regexMatch.</p>
         <section outputclass="contructors_summary">
           <title>Constructor Summary</title>
           <table outputclass="constructor_summary">
@@ -12662,7 +12622,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeph>RegexMatchFunc()</codeph>
-                    <p></p>
                   </entry>
                 </row>
               </tbody>
@@ -12684,7 +12643,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public AviatorObject call(Map&#8203;&lt;java.&#8203;lang.&#8203;String&gt;&#8203;&#8203;&lt;java.&#8203;lang.&#8203;Object&gt;&#8203; env, AviatorObject arg1, AviatorObject arg2)</codeblock>
-                    <p></p>
                     <p>
                       <b>Parameters:</b>
                     </p>
@@ -12723,7 +12681,6 @@
                 <row>
                   <entry align="left" colname="c1">
                     <codeblock>public java.&#8203;lang.&#8203;String getName()</codeblock>
-                    <p></p>
                     <p>
                       <b>Returns:</b>
                     </p>

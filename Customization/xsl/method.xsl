@@ -169,9 +169,7 @@
         <xsl:value-of select="concat(' ', $method)"/>
         <xsl:call-template name="add-signature"/>
       </codeblock>
-      <p class="- topic/p ">
-        <xsl:value-of select="comment"/>
-      </p>
+      <xsl:call-template  name="parse-comment"/>
       <xsl:if test="annotation">
         <p class="- topic/p ">
           <b class=" hi-d/b ">

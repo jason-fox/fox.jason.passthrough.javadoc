@@ -119,9 +119,7 @@
         </xsl:call-template>
         <xsl:value-of select="concat(' ', @name)"/>
       </codeblock>
-      <p class="- topic/p ">
-        <xsl:value-of select="comment"/>
-      </p>
+      <xsl:call-template name="parse-comment"/>
     </xsl:variable>
 
     <table class=" topic/table " outputclass="enum_details">
