@@ -11,7 +11,7 @@ addons:
       - ant
 
 env:
-  - DITA_OT=3.4
+  - DITA_OT=3.4.1
 
 before_install:
   - zip -r fox.jason.passthrough.javadoc.zip . -x *.zip* *.git/* *temp/* *out/*
