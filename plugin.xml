@@ -4,7 +4,7 @@
 	This file is part of the DITA-OT JavaDoc Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.passthrough.javadoc" version="1.0.0">
+<plugin id="fox.jason.passthrough.javadoc" version="1.0.1">
 	<feature extension="ant.import" file="process_javadoc.xml"/>
 	<!--
 		This plugin requires the passthrough reader
