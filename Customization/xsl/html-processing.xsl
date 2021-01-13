@@ -23,7 +23,7 @@
   -->
   <xsl:template match="h1|h2|h3|h4|h5|h6" mode="html">
     <p class="- topic/p ">
-      <b class=" hi-d/b ">
+      <b class="+ topic/ph hi-d/b ">
         <xsl:apply-templates mode="html"/>
       </b>
     </p>
@@ -42,7 +42,7 @@
     Unordered list processing
   -->
   <xsl:template match="ul" mode="html">
-    <ul class=" topic/ul ">
+    <ul class="- topic/ul ">
       <xsl:apply-templates mode="html"/>
     </ul>
   </xsl:template>
@@ -63,18 +63,18 @@
   <xsl:template match="li" mode="html">
     <xsl:choose>
       <xsl:when test="../name()='ul'">
-        <li class=" topic/li ">
+        <li class="- topic/li ">
           <xsl:apply-templates mode="html"/>
         </li>
       </xsl:when>
       <xsl:when test="../name()='ol'">
-        <li class=" topic/li ">
+        <li class="- topic/li ">
           <xsl:apply-templates mode="html"/>
         </li>
       </xsl:when>
       <xsl:otherwise>
-        <ul class=" topic/ul ">
-          <li class=" topic/li ">
+        <ul class="- topic/ul ">
+          <li class="- topic/li ">
             <xsl:apply-templates mode="html"/>
           </li>
         </ul>
@@ -86,7 +86,7 @@
     Code processing
   -->
   <xsl:template match="code" mode="html">
-    <codeph class=" pr-d/codeph ">
+    <codeph class="+ topic/ph pr-d/codeph ">
       <xsl:apply-templates mode="html"/>
     </codeph>
   </xsl:template>
@@ -95,7 +95,7 @@
     Bold/Strong processing
   -->
   <xsl:template match="b|strong" mode="html">
-    <b class=" hi-d/b ">
+    <b class="+ topic/ph hi-d/b ">
       <xsl:apply-templates mode="html"/>
     </b>
   </xsl:template>
@@ -137,7 +137,7 @@
       <xsl:when test="../name()='root'">
         <xsl:choose>
           <xsl:when test="contains($text,'&#10;&#10;') ">
-            <lines class=" topic/lines ">
+            <lines class="- topic/lines ">
               <xsl:value-of select="$text"/>
             </lines>
           </xsl:when>

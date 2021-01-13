@@ -6,6 +6,7 @@
 -->
 <plugin id="fox.jason.passthrough.javadoc" version="1.0.1">
 	<feature extension="ant.import" file="process_javadoc.xml"/>
+	<feature extension="dita.conductor.lib.import" file="lib/passthrough.javadoc-1.0.jar"/>
 	<!--
 		This plugin requires the passthrough reader
 	-->
@@ -13,10 +14,8 @@
 	
 	<!-- Uses the passthrough extension point and file reader -->
 	<feature extension="dita.parser">
-		<parser format="javadoc" class="fox.jason.passthrough.parser.FileReader"/>
+		<parser format="javadoc" class="fox.jason.passthrough.JavadocReader"/>
 	</feature>
-	<feature extension="passthrough.pre" value="javadoc.process.pre"/>
-	<feature extension="passthrough.process" value="javadoc.process"/>
 	<!-- PDF extension point -->
 	<feature extension="dita.xsl.xslfo" value="xsl/xslfo.xsl" type="file"/>
 </plugin>

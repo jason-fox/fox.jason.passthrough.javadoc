@@ -12,7 +12,7 @@
     Package Summary
   -->
   <xsl:template name="add-package-summary">
-    <li class=" topic/li ">
+    <li class="- topic/li ">
       <xsl:call-template name="add-link" >
         <xsl:with-param name="type" select="'topic'" />
         <xsl:with-param name="href" select="concat('#', @name)" />
@@ -50,7 +50,7 @@
             <title class="- topic/title " >
               <xsl:text>Class Summary</xsl:text>
             </title>
-            <ul class=" topic/ul ">
+            <ul class="- topic/ul ">
               <xsl:for-each select="class[@exception='false']">
                 <xsl:sort select="@name"/>
                 <xsl:call-template name="add-items-list"/>
@@ -63,7 +63,7 @@
             <title class="- topic/title " >
               <xsl:text>Exception Summary</xsl:text>
             </title>
-            <ul class=" topic/ul ">
+            <ul class="- topic/ul ">
               <xsl:for-each select="class[@exception='true']">
                 <xsl:sort select="@name"/>
                 <xsl:call-template name="add-items-list"/>
@@ -76,7 +76,7 @@
             <title class="- topic/title " >
               <xsl:text>Interface Summary</xsl:text>
             </title>
-            <ul class=" topic/ul ">
+            <ul class="- topic/ul ">
               <xsl:for-each select="interface">
                 <xsl:sort select="@name"/>
                 <xsl:call-template name="add-items-list"/>
@@ -89,7 +89,7 @@
             <title class="- topic/title " >
               <xsl:text>Enumeration Summary</xsl:text>
             </title>
-            <ul class=" topic/ul ">
+            <ul class="- topic/ul ">
               <xsl:for-each select="enum">
                 <xsl:sort select="@name"/>
                 <xsl:call-template name="add-items-list"/>
@@ -113,7 +113,7 @@
     Summary listing for Classes, Interfaces and Enumeration
   -->
   <xsl:template name="add-items-list">
-    <li class=" topic/li ">
+    <li class="- topic/li ">
       <xsl:call-template name="add-link" >
         <xsl:with-param name="type" select="'topic'" />
         <xsl:with-param name="href" select="concat('#', parent::*/@name, '.', @name)" />

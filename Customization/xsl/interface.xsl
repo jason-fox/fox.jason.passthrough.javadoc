@@ -29,10 +29,10 @@
         </searchtitle>
       </titlealts>
       <body class="- topic/body " outputclass="java">
-        <codeblock class=" pr-d/codeblock ">
+        <codeblock class="+ topic/pre pr-d/codeblock ">
           <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'7')"/>
           <xsl:value-of select="concat(@scope, ' interface ')"/>
-          <b class=" hi-d/b ">
+          <b class="+ topic/ph hi-d/b ">
           	<xsl:variable name="class" select="@name"/>
 		        <xsl:call-template name="add-class-link">
 		          <xsl:with-param name="class" select="$class"/>

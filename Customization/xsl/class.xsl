@@ -35,13 +35,13 @@
 
         <xsl:if test="interface or //package/class[@qualified=$extends]/interface or @externalizable='true' or @serializable='true' ">
           <p class="- topic/p ">
-            <b class=" hi-d/b ">
+            <b class="+ topic/ph hi-d/b ">
               <xsl:text>All Implemented Interfaces:</xsl:text>
             </b>
           </p>
-          <ul class=" topic/ul ">
+          <ul class="- topic/ul ">
             <xsl:for-each select="interface">
-              <li class=" topic/li ">
+              <li class="- topic/li ">
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'topic'" />
                   <xsl:with-param name="href" select="concat('#', @qualified)" />
@@ -50,7 +50,7 @@
               </li>
             </xsl:for-each>
             <xsl:for-each select="//package/class[@qualified=$extends]/interface">
-              <li class=" topic/li ">
+              <li class="- topic/li ">
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'topic'" />
                   <xsl:with-param name="href" select="concat('#', @qualified)" />
@@ -59,12 +59,12 @@
               </li>
             </xsl:for-each>
             <xsl:if test="@externalizable='true'">
-              <li class=" topic/li ">
+              <li class="- topic/li ">
                 <xsl:text>java.io.Externalizable</xsl:text>
               </li>
             </xsl:if>
             <xsl:if test="@serializable='true'">
-              <li class=" topic/li ">
+              <li class="- topic/li ">
                 <xsl:text>java.io.Serializable</xsl:text>
               </li>
             </xsl:if> 
@@ -72,13 +72,13 @@
         </xsl:if>
         <xsl:if test="//package/class/class[@qualified=$class]">
           <p class="- topic/p ">
-            <b class=" hi-d/b ">
+            <b class="+ topic/ph hi-d/b ">
               <xsl:text>Direct Known Subclasses:</xsl:text>
             </b>
           </p>
-          <ul class=" topic/ul ">
+          <ul class="- topic/ul ">
             <xsl:for-each select="//package/class/class[@qualified=$class]">
-               <li class=" topic/li ">
+               <li class="- topic/li ">
                 <xsl:call-template name="add-link" >
                   <xsl:with-param name="type" select="'topic'" />
                   <xsl:with-param name="href" select="concat('#', parent::class/@qualified)" />
@@ -89,10 +89,10 @@
           </ul>
         </xsl:if>
 
-        <codeblock class=" pr-d/codeblock ">
+        <codeblock class="+ topic/pre pr-d/codeblock ">
           <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'1')"/>
           <xsl:value-of select="concat(@scope, ' ', name(), ' ')"/>
-          <b class=" hi-d/b "><xsl:value-of select="@name"/></b>
+          <b class="+ topic/ph hi-d/b "><xsl:value-of select="@name"/></b>
           <xsl:choose>
             <xsl:when test="//package/class[@qualified=$extends]">
                 <xsl:text> extends </xsl:text>
@@ -189,23 +189,23 @@
     Constructor Summary
   -->
   <xsl:template name="add-constructor-summary">
-    <table class=" topic/table " outputclass="constructor_summary">
-      <tgroup class=" topic/tgroup " cols="1">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+    <table class="- topic/table " outputclass="constructor_summary">
+      <tgroup class="- topic/tgroup " cols="1">
+        <colspec class="- topic/colspec " colname="c1" colnum="1" colwidth="100%"/>
+        <thead class="- topic/thead ">
+          <row class="- topic/row ">
+            <entry class="- topic/entry " colname="c1" dita-ot:x="1" align="left">
                <xsl:text>Constructor and Description</xsl:text>
             </entry>
           </row>
         </thead>
-        <tbody class=" topic/tbody ">
+        <tbody class="- topic/tbody ">
           <xsl:for-each select="constructor">
             <xsl:sort select="@name"/>
             <xsl:variable name="constructor" select="@name"/>
-            <row class=" topic/row ">
-               <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-                <codeph class=" pr-d/codeph ">
+            <row class="- topic/row ">
+               <entry class="- topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'1')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
@@ -236,7 +236,7 @@
   <xsl:template match="constructor">
     <xsl:variable name="constructor" select="@name"/>
     <xsl:variable name="constructor_details">
-      <codeblock class=" pr-d/codeblock ">
+      <codeblock class="+ topic/pre pr-d/codeblock ">
         <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'9')"/>
         <xsl:value-of select="$constructor"/>
         <xsl:call-template name="add-signature"/>
@@ -245,7 +245,7 @@
       <xsl:call-template name="parameter-description"/>
     </xsl:variable>
 
-    <table class=" topic/table " outputclass="constructor_details">
+    <table class="- topic/table " outputclass="constructor_details">
       <xsl:attribute name="id">
         <xsl:value-of select="concat('constructors_',$constructor)"/>
         <xsl:if test="count(../constructor[@name=$constructor])&gt;1">
@@ -266,27 +266,27 @@
     Field Summary
   -->
   <xsl:template name="add-field-summary">
-    <table class=" topic/table " outputclass="field_summary">
-      <tgroup class=" topic/tgroup " cols="2">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
-        <colspec class=" topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+    <table class="- topic/table " outputclass="field_summary">
+      <tgroup class="- topic/tgroup " cols="2">
+        <colspec class="- topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
+        <colspec class="- topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
+        <thead class="- topic/thead ">
+          <row class="- topic/row ">
+            <entry class="- topic/entry " colname="c1" dita-ot:x="1" align="left">
                <xsl:text>Modifier and Type</xsl:text>
             </entry>
-            <entry class=" topic/entry " colname="c2" dita-ot:x="2" align="left">
+            <entry class="- topic/entry " colname="c2" dita-ot:x="2" align="left">
                <xsl:text>Field and Description</xsl:text>
             </entry>
           </row>
         </thead>
-        <tbody class=" topic/tbody ">
+        <tbody class="- topic/tbody ">
           <xsl:for-each select="field">
             <xsl:sort select="@name"/>
             <xsl:variable name="field" select="@name"/>
-            <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-                <codeph class=" pr-d/codeph ">
+            <row class="- topic/row ">
+              <entry class="- topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'3')"/>
                   <xsl:call-template name="add-modifiers"/>
                   <xsl:call-template name="add-class-link">
@@ -295,8 +295,8 @@
                   <xsl:apply-templates select="type/generic"/>
                 </codeph>
               </entry>
-               <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
-                <codeph class=" pr-d/codeph ">
+               <entry class="- topic/entry " colname="c2"  dita-ot:x="2" align="left">
+                <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'4')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
@@ -326,7 +326,7 @@
   <xsl:template match="field">
     <xsl:variable name="field" select="@name"/>
     <xsl:variable name="field_details">
-      <codeph class=" pr-d/codeph ">
+      <codeph class="+ topic/ph pr-d/codeph ">
         <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'5')"/>
         <xsl:value-of select="concat(@scope, ' ')"/>
         <xsl:if test="@static='true'">
@@ -345,7 +345,7 @@
       <xsl:call-template  name="parse-comment"/>
     </xsl:variable>
 
-    <table class=" topic/table " outputclass="field_details">
+    <table class="- topic/table " outputclass="field_details">
       <xsl:attribute name="id">
         <xsl:value-of select="concat('fields_',$field)"/>
         <xsl:if test="count(../field[@name=$field])&gt;1">

@@ -25,11 +25,11 @@
   -->
   <xsl:template name="inheritance-methods-object">
     <p class="- topic/p "/>
-    <table class=" topic/table " outputclass="method_details">
+    <table class="- topic/table " outputclass="method_details">
       <xsl:call-template name="mini-table" >
         <xsl:with-param name="header" select="'Methods inherited from class java.lang.Object'"/>
         <xsl:with-param name="body">
-          <codeph class=" pr-d/codeph ">
+          <codeph class="+ topic/ph pr-d/codeph ">
             <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'10')"/>
             <xsl:text>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</xsl:text>
           </codeph>
@@ -42,11 +42,11 @@
   -->
   <xsl:template name="inheritance-methods-exception">
     <p class="- topic/p "/>
-    <table class=" topic/table " outputclass="method_details">
+    <table class="- topic/table " outputclass="method_details">
       <xsl:call-template name="mini-table" >
         <xsl:with-param name="header" select="'Methods inherited from class java.lang.Throwable'"/>
         <xsl:with-param name="body">
-          <codeph class=" pr-d/codeph ">
+          <codeph class="+ topic/ph pr-d/codeph ">
             <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'11')"/>
             <xsl:text>addSuppressed, fillInStackTrace, getCause, getLocalizedMessage, getMessage, getStackTrace, getSuppressed, initCause, printStackTrace, printStackTrace, printStackTrace, setStackTrace, toString</xsl:text>
           </codeph>

@@ -14,27 +14,27 @@
     Method Summary
   -->
   <xsl:template name="add-method-summary">
-    <table class=" topic/table " outputclass="method_summary">
-      <tgroup class=" topic/tgroup " cols="2">
-        <colspec class=" topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
-        <colspec class=" topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
-        <thead class=" topic/thead ">
-          <row class=" topic/row ">
-            <entry class=" topic/entry " colname="c1" dita-ot:x="1" align="left">
+    <table class="- topic/table " outputclass="method_summary">
+      <tgroup class="- topic/tgroup " cols="2">
+        <colspec class="- topic/colspec " colname="c1" colnum="1" colwidth="25%"/>
+        <colspec class="- topic/colspec " colname="c2" colnum="2" colwidth="75%"/>
+        <thead class="- topic/thead ">
+          <row class="- topic/row ">
+            <entry class="- topic/entry " colname="c1" dita-ot:x="1" align="left">
                <xsl:text>Modifier and Type</xsl:text>
             </entry>
-            <entry class=" topic/entry " colname="c2" dita-ot:x="2" align="left">
+            <entry class="- topic/entry " colname="c2" dita-ot:x="2" align="left">
                <xsl:text>Method and Description</xsl:text>
             </entry>
           </row>
         </thead>
-        <tbody class=" topic/tbody ">
+        <tbody class="- topic/tbody ">
           <xsl:for-each select="method">
             <xsl:sort select="@name"/>
             <xsl:variable name="method" select="@name"/>
-            <row class=" topic/row ">
-              <entry class=" topic/entry " colname="c1"  dita-ot:x="1" align="left">
-                <codeph class=" pr-d/codeph ">
+            <row class="- topic/row ">
+              <entry class="- topic/entry " colname="c1"  dita-ot:x="1" align="left">
+                <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'12')"/>
                   <xsl:call-template name="add-modifiers"/>
                   <xsl:call-template name="add-class-link">
@@ -43,8 +43,8 @@
                   <xsl:apply-templates select="child::return/generic"/>
                 </codeph>
               </entry>
-               <entry class=" topic/entry " colname="c2"  dita-ot:x="2" align="left">
-                <codeph class=" pr-d/codeph ">
+               <entry class="- topic/entry " colname="c2"  dita-ot:x="2" align="left">
+                <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'13')"/>
                   <xsl:call-template name="add-link" >
                     <xsl:with-param name="type" select="'table'" />
@@ -107,7 +107,7 @@
       <xsl:for-each select="//package/class[@qualified=$extends]/method">
         <xsl:sort select="@name"/>
         <xsl:variable name="method" select="@name"/>
-        <codeph class=" pr-d/codeph ">
+        <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'14')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'table'" />
@@ -127,7 +127,7 @@
     </xsl:variable>
 
     <p class="- topic/p "/>
-    <table class=" topic/table " outputclass="method_details">
+    <table class="- topic/table " outputclass="method_details">
       <xsl:call-template name="mini-table" >
         <xsl:with-param name="header" select="$inherited_methods"/>
         <xsl:with-param name="body" select="$inherited_methods_details"/>
@@ -157,7 +157,7 @@
   <xsl:template match="method">
     <xsl:variable name="method" select="@name"/>
     <xsl:variable name="method_details">
-      <codeblock class=" pr-d/codeblock ">
+      <codeblock class="+ topic/pre pr-d/codeblock ">
         <xsl:attribute name="xtrc" select="concat('codeblock:',generate-id(.),'8')"/>
         <xsl:value-of select="concat(@scope, ' ')"/>
         <xsl:call-template name="add-modifiers"/>
@@ -172,7 +172,7 @@
       <xsl:call-template  name="parse-comment"/>
       <xsl:if test="annotation">
         <p class="- topic/p ">
-          <b class=" hi-d/b ">
+          <b class="+ topic/ph hi-d/b ">
             <xsl:text>Overrides:</xsl:text>
           </b>
         </p>
@@ -186,7 +186,7 @@
       <xsl:call-template name="return-description"/>
     </xsl:variable>
 
-    <table class=" topic/table " outputclass="method_details">
+    <table class="- topic/table " outputclass="method_details">
       <xsl:attribute name="id">
         <xsl:value-of select="concat('methods_', $method)"/>
         <xsl:if test="count(../method[@name=$method])&gt;1">
@@ -229,15 +229,15 @@
   <xsl:template name="parameter-description">
     <xsl:if test="parameter">
       <p class="- topic/p ">
-        <b class=" hi-d/b ">
+        <b class="+ topic/ph hi-d/b ">
           <xsl:text>Parameters:</xsl:text>
         </b>
       </p>
-      <ul class=" topic/ul ">
+      <ul class="- topic/ul ">
         <xsl:for-each select="parameter">
           <xsl:variable name="pcount" select="position()"/>
-          <li class=" topic/li ">
-            <codeph class=" pr-d/codeph ">
+          <li class="- topic/li ">
+            <codeph class="+ topic/ph pr-d/codeph ">
               <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'15')"/>
               <xsl:value-of select="concat(@name, ' ')"/>
             </codeph>
@@ -256,7 +256,7 @@
   <xsl:template name="return-description">
     <xsl:if test="child::return[not(@qualified='void')]">
       <p class="- topic/p ">
-        <b class=" hi-d/b ">
+        <b class="+ topic/ph hi-d/b ">
           <xsl:text>Returns:</xsl:text>
         </b>
       </p>
@@ -266,7 +266,7 @@
             <xsl:value-of select="tag[last()]/@text"/>
           </xsl:when>
           <xsl:otherwise>
-            <codeph class=" pr-d/codeph ">
+            <codeph class="+ topic/ph pr-d/codeph ">
               <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'16')"/>
               <xsl:value-of select="child::return/@qualified"/>
               <xsl:value-of select="child::return/@dimension"/>
@@ -284,7 +284,7 @@
     
       
       <p class="- topic/p ">
-        <codeph class=" pr-d/codeph ">
+        <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'17')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'table'" />
@@ -298,7 +298,7 @@
           </xsl:call-template>
         </codeph>
         <xsl:text> in class </xsl:text>
-         <codeph class=" pr-d/codeph ">
+         <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'18')"/>
           <xsl:call-template name="add-link" >
             <xsl:with-param name="type" select="'topic'" />
