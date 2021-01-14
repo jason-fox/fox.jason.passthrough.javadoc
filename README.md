@@ -94,8 +94,6 @@ rm dita-ot-3.6.zip
 -   Run the plug-in installation commands:
 
 ```console
-dita install https://github.com/doctales/org.doctales.xmltask/archive/master.zip
-dita install https://github.com/jason-fox/fox.jason.passthrough/archive/master.zip
 dita install https://github.com/jason-fox/fox.jason.passthrough.javadoc/archive/master.zip
 ```
 
