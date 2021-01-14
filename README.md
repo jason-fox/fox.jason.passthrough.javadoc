@@ -173,9 +173,4 @@ the filename will be replaced by spaces in title.
 
 ## License
 
-[Apache 2.0](LICENSE) © 2019 - 2020 Jason Fox
-
-The Program includes the following additional software components which were obtained under license:
-
--   xmltask.jar - http://www.oopsconsultancy.com/software/xmltask/ - **Apache 1.1 license** (within
-    `org.doctales.xmltask` plug-in)
+[Apache 2.0](LICENSE) © 2019 - 2021 Jason Fox

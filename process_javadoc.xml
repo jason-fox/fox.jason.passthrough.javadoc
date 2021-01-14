@@ -8,7 +8,6 @@
 		Iterate across all files marked format="javadoc" and process them
 	-->
 	<target name="javadoc.process">
-		<echo taskname="javadoc" level="info" message="Processing ${passthrough.title}"/>
 		<xslt taskname="javadoc" in="${passthrough.input}" out="${passthrough.output}" force="true" style="${basedir}/xsl/javadoc2dita.xsl"/>
 	</target>
 </project>

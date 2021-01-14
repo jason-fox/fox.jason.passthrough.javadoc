@@ -6,7 +6,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
-                xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
                 version="2.0">
 
   <!--
@@ -51,7 +50,7 @@
     Ordered list processing
   -->
   <xsl:template match="ol" mode="html">
-    <ol class=" topic/ol ">
+    <ol class="- topic/ol ">
       <xsl:apply-templates mode="html"/>
     </ol>
   </xsl:template>
@@ -113,7 +112,7 @@
     Anchor processing
   -->
   <xsl:template match="a" mode="html">
-    <xref class=" topic/xref " format="dita" scope="external">
+    <xref class="- topic/xref " format="dita" scope="external">
       <xsl:attribute name="href">
         <xsl:value-of select="@href"/>
       </xsl:attribute>
