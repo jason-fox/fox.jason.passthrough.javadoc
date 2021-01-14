@@ -4,15 +4,11 @@
 	This file is part of the DITA-OT JavaDoc Plug-in project.
 	See the accompanying LICENSE file for applicable licenses.
 -->
-<plugin id="fox.jason.passthrough.javadoc" version="1.0.1">
+<plugin id="fox.jason.passthrough.javadoc" version="2.0.0">
 	<feature extension="ant.import" file="process_javadoc.xml"/>
 	<feature extension="dita.conductor.lib.import" file="lib/passthrough.javadoc-1.0.jar"/>
-	<!--
-		This plugin requires the passthrough reader
-	-->
-	<require plugin="fox.jason.passthrough"/>
-	
-	<!-- Uses the passthrough extension point and file reader -->
+	<feature extension="dita.conductor.lib.import" file="lib/passthrough.parser-4.0.jar"/>
+	<!-- Uses the passthrough JavaDoc file reader -->
 	<feature extension="dita.parser">
 		<parser format="javadoc" class="fox.jason.passthrough.JavadocReader"/>
 	</feature>
