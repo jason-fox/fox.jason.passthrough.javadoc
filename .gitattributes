@@ -1,1 +1,3 @@
-test/* linguist-vendored
+test/** linguist-vendored
+
+process_javadoc.xml linguist-language=Ant-Build-System
