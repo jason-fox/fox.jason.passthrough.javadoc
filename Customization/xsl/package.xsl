@@ -3,19 +3,21 @@
   This file is part of the DITA-OT JavaDoc Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
-                version="2.0">
+<xsl:stylesheet
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
+  version="2.0"
+>
   <!--
     Package Summary
   -->
   <xsl:template name="add-package-summary">
     <li class="- topic/li ">
-      <xsl:call-template name="add-link" >
-        <xsl:with-param name="type" select="'topic'" />
-        <xsl:with-param name="href" select="concat('#', @name)" />
-        <xsl:with-param name="text" select="@name" />
+      <xsl:call-template name="add-link">
+        <xsl:with-param name="type" select="'topic'"/>
+        <xsl:with-param name="href" select="concat('#', @name)"/>
+        <xsl:with-param name="text" select="@name"/>
       </xsl:call-template>
       <xsl:if test="comment">
         <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>
@@ -26,7 +28,12 @@
      Package Overview
   -->
   <xsl:template match="package">
-    <topic domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot" class="- topic/topic " props="javadoc">
+    <topic
+      domains="(topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)"
+      xmlns:dita="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
+      class="- topic/topic "
+      props="javadoc"
+    >
       <xsl:attribute name="id">
         <xsl:value-of select="@name"/>
       </xsl:attribute>
@@ -46,7 +53,7 @@
         <xsl:call-template name="add-description"/>
         <xsl:if test="class[@exception='false']">
           <section class="- topic/section " outputclass="class_summary">
-            <title class="- topic/title " >
+            <title class="- topic/title ">
               <xsl:text>Class Summary</xsl:text>
             </title>
             <ul class="- topic/ul ">
@@ -59,7 +66,7 @@
         </xsl:if>
          <xsl:if test="class[@exception='true']">
           <section class="- topic/section " outputclass="class_summary">
-            <title class="- topic/title " >
+            <title class="- topic/title ">
               <xsl:text>Exception Summary</xsl:text>
             </title>
             <ul class="- topic/ul ">
@@ -72,7 +79,7 @@
         </xsl:if>
         <xsl:if test="interface">
            <section class="- topic/section " outputclass="interfaces_summary">
-            <title class="- topic/title " >
+            <title class="- topic/title ">
               <xsl:text>Interface Summary</xsl:text>
             </title>
             <ul class="- topic/ul ">
@@ -85,7 +92,7 @@
         </xsl:if>
         <xsl:if test="enum">
            <section class="- topic/section " outputclass="enums_summary">
-            <title class="- topic/title " >
+            <title class="- topic/title ">
               <xsl:text>Enumeration Summary</xsl:text>
             </title>
             <ul class="- topic/ul ">
@@ -97,14 +104,14 @@
           </section>
         </xsl:if>
       </body>
-      <xsl:apply-templates select="class" >
-        <xsl:sort select="@name" />
+      <xsl:apply-templates select="class">
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
-      <xsl:apply-templates select="interface" >
-        <xsl:sort select="@name" />
+      <xsl:apply-templates select="interface">
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
-      <xsl:apply-templates select="enum" >
-        <xsl:sort select="@name" />
+      <xsl:apply-templates select="enum">
+        <xsl:sort select="@name"/>
       </xsl:apply-templates>
     </topic>
   </xsl:template>
@@ -113,10 +120,10 @@
   -->
   <xsl:template name="add-items-list">
     <li class="- topic/li ">
-      <xsl:call-template name="add-link" >
-        <xsl:with-param name="type" select="'topic'" />
-        <xsl:with-param name="href" select="concat('#', parent::*/@name, '.', @name)" />
-        <xsl:with-param name="text" select="@name" />
+      <xsl:call-template name="add-link">
+        <xsl:with-param name="type" select="'topic'"/>
+        <xsl:with-param name="href" select="concat('#', parent::*/@name, '.', @name)"/>
+        <xsl:with-param name="text" select="@name"/>
       </xsl:call-template>
       <xsl:if test="comment">
         <xsl:value-of select="concat (' - ',substring-before(comment,'.'),'.')"/>

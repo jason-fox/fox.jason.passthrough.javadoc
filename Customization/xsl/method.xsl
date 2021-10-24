@@ -3,10 +3,12 @@
   This file is part of the DITA-OT JavaDoc Plug-in project.
   See the accompanying LICENSE file for applicable licenses.
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
-                version="2.0">
+<xsl:stylesheet
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot"
+  version="2.0"
+>
 
 
   <!--
@@ -32,7 +34,7 @@
             <xsl:sort select="@name"/>
             <xsl:variable name="method" select="@name"/>
             <row class="- topic/row ">
-              <entry class="- topic/entry " colname="c1"  dita-ot:x="1" align="left">
+              <entry class="- topic/entry " colname="c1" dita-ot:x="1" align="left">
                 <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'12')"/>
                   <xsl:call-template name="add-modifiers"/>
@@ -42,18 +44,18 @@
                   <xsl:apply-templates select="child::return/generic"/>
                 </codeph>
               </entry>
-               <entry class="- topic/entry " colname="c2"  dita-ot:x="2" align="left">
+               <entry class="- topic/entry " colname="c2" dita-ot:x="2" align="left">
                 <codeph class="+ topic/ph pr-d/codeph ">
                   <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'13')"/>
-                  <xsl:call-template name="add-link" >
-                    <xsl:with-param name="type" select="'table'" />
+                  <xsl:call-template name="add-link">
+                    <xsl:with-param name="type" select="'table'"/>
                     <xsl:with-param name="href">
                       <xsl:value-of select="concat('#', parent::*/@qualified, '/methods_', $method)"/>
                       <xsl:if test="count(../method[@name=$method])&gt;1">
                         <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
                       </xsl:if>
                     </xsl:with-param>
-                    <xsl:with-param name="text" select="$method" />
+                    <xsl:with-param name="text" select="$method"/>
                   </xsl:call-template>
                   <xsl:call-template name="add-signature"/>
                 </codeph>
@@ -75,12 +77,12 @@
     <xsl:choose>
       <xsl:when test="//package/class[@qualified=$extends]">
         <xsl:call-template name="inheritance-method-summary">
-          <xsl:with-param name="extends" select = "//package/class[@qualified=$extends]/@qualified" />
+          <xsl:with-param name="extends" select="//package/class[@qualified=$extends]/@qualified"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="inheritance-java-lang" >
-          <xsl:with-param name="extends" select = "$extends" />
+        <xsl:call-template name="inheritance-java-lang">
+          <xsl:with-param name="extends" select="$extends"/>
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -90,15 +92,15 @@
     List methods from inherited classes
   -->
   <xsl:template name="inheritance-method-summary">
-    <xsl:param name = "extends" />
+    <xsl:param name="extends"/>
       
     <xsl:variable name="inherited_methods">
       <xsl:text>Methods inherited from class </xsl:text>
       <xsl:value-of select="replace(@qualified,'\..*$','.')"/>
-      <xsl:call-template name="add-link" >
-        <xsl:with-param name="type" select="'topic'" />
-        <xsl:with-param name="href" select="concat('#', //package/class[@qualified=$extends]/@qualified)" />
-        <xsl:with-param name="text" select="//package/class[@qualified=$extends]/@name" />
+      <xsl:call-template name="add-link">
+        <xsl:with-param name="type" select="'topic'"/>
+        <xsl:with-param name="href" select="concat('#', //package/class[@qualified=$extends]/@qualified)"/>
+        <xsl:with-param name="text" select="//package/class[@qualified=$extends]/@name"/>
       </xsl:call-template>
     </xsl:variable>
 
@@ -108,15 +110,15 @@
         <xsl:variable name="method" select="@name"/>
         <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'14')"/>
-          <xsl:call-template name="add-link" >
-            <xsl:with-param name="type" select="'table'" />
+          <xsl:call-template name="add-link">
+            <xsl:with-param name="type" select="'table'"/>
             <xsl:with-param name="href">
               <xsl:value-of select="concat('#', $extends,'/methods_', $method)"/>
               <xsl:if test="count(../method[@name=$method])&gt;1">
                 <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
               </xsl:if>
             </xsl:with-param>
-            <xsl:with-param name="text" select="$method" />
+            <xsl:with-param name="text" select="$method"/>
           </xsl:call-template>
         </codeph>
         <xsl:if test="position() != last()">
@@ -127,7 +129,7 @@
 
     <p class="- topic/p "/>
     <table class="- topic/table " outputclass="method_details">
-      <xsl:call-template name="mini-table" >
+      <xsl:call-template name="mini-table">
         <xsl:with-param name="header" select="$inherited_methods"/>
         <xsl:with-param name="body" select="$inherited_methods_details"/>
       </xsl:call-template>
@@ -138,13 +140,13 @@
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="//package/class[@qualified=$reextends]">
-        <xsl:call-template name="inheritance-method-summary" >
-          <xsl:with-param name="extends" select = "//package/class[@qualified=$reextends]/@qualified" />
+        <xsl:call-template name="inheritance-method-summary">
+          <xsl:with-param name="extends" select="//package/class[@qualified=$reextends]/@qualified"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="inheritance-java-lang" >
-          <xsl:with-param name="extends" select = "$reextends" />
+        <xsl:call-template name="inheritance-java-lang">
+          <xsl:with-param name="extends" select="$reextends"/>
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -168,7 +170,7 @@
         <xsl:value-of select="concat(' ', $method)"/>
         <xsl:call-template name="add-signature"/>
       </codeblock>
-      <xsl:call-template  name="parse-comment"/>
+      <xsl:call-template name="parse-comment"/>
       <xsl:if test="annotation">
         <p class="- topic/p ">
           <b class="+ topic/ph hi-d/b ">
@@ -192,7 +194,7 @@
           <xsl:value-of select="count(following-sibling::method[@name=$method])"/>
         </xsl:if>
       </xsl:attribute>
-      <xsl:call-template name="mini-table" >
+      <xsl:call-template name="mini-table">
         <xsl:with-param name="header">
           <xsl:value-of select="$method"/>
         </xsl:with-param>
@@ -260,7 +262,7 @@
         </b>
       </p>
       <p class="- topic/p ">
-        <xsl:choose >
+        <xsl:choose>
           <xsl:when test="tag[last()]/@text">
             <xsl:value-of select="tag[last()]/@text"/>
           </xsl:when>
@@ -285,24 +287,26 @@
       <p class="- topic/p ">
         <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'17')"/>
-          <xsl:call-template name="add-link" >
-            <xsl:with-param name="type" select="'table'" />
+          <xsl:call-template name="add-link">
+            <xsl:with-param name="type" select="'table'"/>
             <xsl:with-param name="href">
-              <xsl:value-of select="concat('#', $extends, '/methods_', $method)" />
+              <xsl:value-of select="concat('#', $extends, '/methods_', $method)"/>
               <xsl:if test="count(//package/class[@qualified=$extends]/method[@name=$method])&gt;1">
-                <xsl:value-of select="count(//package/class[@qualified=$extends]/method[@name=$method and @signature=$signature]/following-sibling::method[@name=$method])"/>
+                <xsl:value-of
+                select="count(//package/class[@qualified=$extends]/method[@name=$method and @signature=$signature]/following-sibling::method[@name=$method])"
+              />
               </xsl:if>
             </xsl:with-param>
-            <xsl:with-param name="text" select="replace(@qualified,'^.*\.','')" />
+            <xsl:with-param name="text" select="replace(@qualified,'^.*\.','')"/>
           </xsl:call-template>
         </codeph>
         <xsl:text> in class </xsl:text>
          <codeph class="+ topic/ph pr-d/codeph ">
           <xsl:attribute name="xtrc" select="concat('codeph:',generate-id(.),'18')"/>
-          <xsl:call-template name="add-link" >
-            <xsl:with-param name="type" select="'topic'" />
-            <xsl:with-param name="href" select="concat('#', $extends)" />
-            <xsl:with-param name="text" select="replace($extends,'^.*\.','')" />
+          <xsl:call-template name="add-link">
+            <xsl:with-param name="type" select="'topic'"/>
+            <xsl:with-param name="href" select="concat('#', $extends)"/>
+            <xsl:with-param name="text" select="replace($extends,'^.*\.','')"/>
           </xsl:call-template>
         </codeph>
       </p>
@@ -325,27 +329,27 @@
     <!---
 -->
   <xsl:template name="add-class-link">
-    <xsl:param name = "class" />
+    <xsl:param name="class"/>
     <xsl:choose>
       <xsl:when test="//package/class[@qualified=$class]">
-        <xsl:call-template name="add-link" >
-          <xsl:with-param name="type" select="'topic'" />
+        <xsl:call-template name="add-link">
+          <xsl:with-param name="type" select="'topic'"/>
           <xsl:with-param name="href" select="concat('#', $class)"/>
-          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="//package/interface[@qualified=$class]">
-        <xsl:call-template name="add-link" >
-          <xsl:with-param name="type" select="'topic'" />
+        <xsl:call-template name="add-link">
+          <xsl:with-param name="type" select="'topic'"/>
           <xsl:with-param name="href" select="concat('#', $class)"/>
-          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="//package/enum[@qualified=$class]">
-        <xsl:call-template name="add-link" >
-          <xsl:with-param name="type" select="'topic'" />
+        <xsl:call-template name="add-link">
+          <xsl:with-param name="type" select="'topic'"/>
           <xsl:with-param name="href" select="concat('#', $class)"/>
-          <xsl:with-param name="text" select="replace($class,'^.*\.','')" />
+          <xsl:with-param name="text" select="replace($class,'^.*\.','')"/>
         </xsl:call-template>
       </xsl:when>
        <xsl:when test="starts-with($class,'java.lang.')">

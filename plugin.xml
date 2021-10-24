@@ -6,8 +6,14 @@
 -->
 <plugin id="fox.jason.passthrough.javadoc" version="2.0.0">
 	<feature extension="ant.import" file="process_javadoc.xml"/>
-	<feature extension="dita.conductor.lib.import" file="lib/passthrough.javadoc-1.0.jar"/>
-	<feature extension="dita.conductor.lib.import" file="lib/passthrough.parser-4.0.jar"/>
+	<feature
+    extension="dita.conductor.lib.import"
+    file="lib/passthrough.javadoc-1.0.jar"
+  />
+	<feature
+    extension="dita.conductor.lib.import"
+    file="lib/passthrough.parser-4.0.jar"
+  />
 	<!-- Uses the passthrough JavaDoc file reader -->
 	<feature extension="dita.parser">
 		<parser format="javadoc" class="fox.jason.passthrough.JavadocReader"/>

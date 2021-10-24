@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root>
     <package name="org.casbin.jcasbin.config">
-        <class name="Config" qualified="org.casbin.jcasbin.config.Config" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+        <class
+      name="Config"
+      qualified="org.casbin.jcasbin.config.Config"
+      scope="public"
+      abstract="false"
+      error="false"
+      exception="false"
+      externalizable="false"
+      included="true"
+      serializable="false"
+    >
             <class qualified="java.lang.Object"/>
-            <method name="newConfig" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.newConfig" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="true" varArgs="false">
-                <comment>newConfig create an empty configuration representation from file. 
+            <method
+        name="newConfig"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.newConfig"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="true"
+        varArgs="false"
+      >
+                <comment
+        >newConfig create an empty configuration representation from file. 
 This is another line of text.
 
  &lt;p&gt;This is a simple paragraph with some &lt;code&gt;code&lt;/code&gt; within in.&lt;/p&gt;
@@ -19,8 +42,21 @@ This is another line of text.
                 </parameter>
                 <return qualified="org.casbin.jcasbin.config.Config"/>
             </method>
-            <method name="newConfigFromText" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.newConfigFromText" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="true" varArgs="false">
-                <comment>newConfigFromText create an empty configuration representation from text.
+            <method
+        name="newConfigFromText"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.newConfigFromText"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="true"
+        varArgs="false"
+      >
+                <comment
+        >newConfigFromText create an empty configuration representation from text.
 
 &lt;p&gt;This is a simple paragraph with some &lt;code&gt;code&lt;/code&gt; within in.&lt;/p&gt;
  &lt;ul&gt;
@@ -37,37 +73,109 @@ This is another line of text.
                 </parameter>
                 <return qualified="org.casbin.jcasbin.config.Config"/>
             </method>
-            <method name="getBool" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.getBool" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="getBool"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.getBool"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <return qualified="boolean"/>
             </method>
-            <method name="getInt" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.getInt" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="getInt"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.getInt"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <return qualified="int"/>
             </method>
-            <method name="getFloat" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.getFloat" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="getFloat"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.getFloat"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <return qualified="float"/>
             </method>
-            <method name="getString" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.getString" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="getString"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.getString"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <return qualified="java.lang.String"/>
             </method>
-            <method name="getStrings" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.getStrings" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="getStrings"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.getStrings"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <return qualified="java.lang.String" dimension="[]"/>
             </method>
-            <method name="set" signature="(java.lang.String, java.lang.String)" qualified="org.casbin.jcasbin.config.Config.set" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="set"
+        signature="(java.lang.String, java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.set"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
@@ -76,7 +184,19 @@ This is another line of text.
                 </parameter>
                 <return qualified="void"/>
             </method>
-            <method name="get" signature="(java.lang.String)" qualified="org.casbin.jcasbin.config.Config.get" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
+            <method
+        name="get"
+        signature="(java.lang.String)"
+        qualified="org.casbin.jcasbin.config.Config.get"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
                 <parameter name="key">
                     <type qualified="java.lang.String"/>
                 </parameter>
@@ -85,7 +205,12 @@ This is another line of text.
         </class>
     </package>
     <package name="org.casbin.jcasbin.effect">
-        <enum name="Effect" qualified="org.casbin.jcasbin.effect.Effect" scope="public" included="true">
+        <enum
+      name="Effect"
+      qualified="org.casbin.jcasbin.effect.Effect"
+      scope="public"
+      included="true"
+    >
             <class qualified="java.lang.Enum">
                 <generic qualified="org.casbin.jcasbin.effect.Effect"/>
             </class>
@@ -93,19 +218,49 @@ This is another line of text.
             <constant name="Indeterminate"/>
             <constant name="Deny"/>
         </enum>
-        <interface name="Effector" qualified="org.casbin.jcasbin.effect.Effector" scope="public" included="true">
+        <interface
+      name="Effector"
+      qualified="org.casbin.jcasbin.effect.Effector"
+      scope="public"
+      included="true"
+    >
             <comment>Effector is the interface for Casbin effectors.</comment>
-            <method name="mergeEffects" signature="(java.lang.String, org.casbin.jcasbin.effect.Effect[], float[])" qualified="org.casbin.jcasbin.effect.Effector.mergeEffects" scope="public" abstract="true" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
-                <comment>mergeEffects merges all matching results collected by the enforcer into a single decision.</comment>
-                <tag name="@param" text="expr the expression of [policy_effect]."/>
-                <tag name="@param" text="effects the effects of all matched rules."/>
-                <tag name="@param" text="results the matcher results of all matched rules."/>
+            <method
+        name="mergeEffects"
+        signature="(java.lang.String, org.casbin.jcasbin.effect.Effect[], float[])"
+        qualified="org.casbin.jcasbin.effect.Effector.mergeEffects"
+        scope="public"
+        abstract="true"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
+                <comment
+        >mergeEffects merges all matching results collected by the enforcer into a single decision.</comment>
+                <tag
+          name="@param"
+          text="expr the expression of [policy_effect]."
+        />
+                <tag
+          name="@param"
+          text="effects the effects of all matched rules."
+        />
+                <tag
+          name="@param"
+          text="results the matcher results of all matched rules."
+        />
                 <tag name="@return" text="the final effect."/>
                 <parameter name="expr">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <parameter name="effects">
-                    <type qualified="org.casbin.jcasbin.effect.Effect" dimension="[]"/>
+                    <type
+            qualified="org.casbin.jcasbin.effect.Effect"
+            dimension="[]"
+          />
                 </parameter>
                 <parameter name="results">
                     <type qualified="float" dimension="[]"/>
@@ -113,20 +268,58 @@ This is another line of text.
                 <return qualified="boolean"/>
             </method>
         </interface>
-        <class name="DefaultEffector" qualified="org.casbin.jcasbin.effect.DefaultEffector" scope="public" abstract="false" error="false" exception="false" externalizable="false" included="true" serializable="false">
+        <class
+      name="DefaultEffector"
+      qualified="org.casbin.jcasbin.effect.DefaultEffector"
+      scope="public"
+      abstract="false"
+      error="false"
+      exception="false"
+      externalizable="false"
+      included="true"
+      serializable="false"
+    >
             <comment>DefaultEffector is default effector for Casbin.</comment>
             <class qualified="java.lang.Object"/>
             <interface qualified="org.casbin.jcasbin.effect.Effector"/>
-            <constructor name="DefaultEffector" signature="()" qualified="org.casbin.jcasbin.effect.DefaultEffector" scope="public" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
-                <comment>DefaultEffector is the constructor for DefaultEffector.</comment>
+            <constructor
+        name="DefaultEffector"
+        signature="()"
+        qualified="org.casbin.jcasbin.effect.DefaultEffector"
+        scope="public"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
+                <comment
+        >DefaultEffector is the constructor for DefaultEffector.</comment>
             </constructor>
-            <method name="mergeEffects" signature="(java.lang.String, org.casbin.jcasbin.effect.Effect[], float[])" qualified="org.casbin.jcasbin.effect.DefaultEffector.mergeEffects" scope="public" abstract="false" final="false" included="true" native="false" synchronized="false" static="false" varArgs="false">
-                <comment>mergeEffects merges all matching results collected by the enforcer into a single decision.</comment>
+            <method
+        name="mergeEffects"
+        signature="(java.lang.String, org.casbin.jcasbin.effect.Effect[], float[])"
+        qualified="org.casbin.jcasbin.effect.DefaultEffector.mergeEffects"
+        scope="public"
+        abstract="false"
+        final="false"
+        included="true"
+        native="false"
+        synchronized="false"
+        static="false"
+        varArgs="false"
+      >
+                <comment
+        >mergeEffects merges all matching results collected by the enforcer into a single decision.</comment>
                 <parameter name="expr">
                     <type qualified="java.lang.String"/>
                 </parameter>
                 <parameter name="effects">
-                    <type qualified="org.casbin.jcasbin.effect.Effect" dimension="[]"/>
+                    <type
+            qualified="org.casbin.jcasbin.effect.Effect"
+            dimension="[]"
+          />
                 </parameter>
                 <parameter name="results">
                     <type qualified="float" dimension="[]"/>
